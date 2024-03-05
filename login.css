@@ -1,0 +1,196 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+
+body{
+    background-color: #0B0A28;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper{
+    width: 1020px;
+    height: 740px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: #100F3D;
+}
+form{
+    position: relative;
+}
+.login-form{
+    width: 500px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    margin-left: 5px;
+}
+img{
+    width: 500px;
+    height: 720px;
+    align-self: center;
+    border-radius: 0 10px 10px 0;
+
+}
+input{
+width: 350px;
+height: 35px;
+margin-bottom: 5px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+padding-left: 4rem;
+margin-bottom: 20px;
+font-family: 'poppins';
+}
+
+#usericon{
+    position: absolute;
+    left: 2rem;
+    top: 0.35rem;
+    margin-right: 1rem;
+    color: #333;
+}
+
+#passwordIcon{
+    position: absolute;
+    left: 2rem;
+    top: 3.9rem;
+    margin-right: 1rem;
+    color: #333;
+}
+#emailIcon{
+    position: absolute;
+    left: 2rem;
+    top: 4rem;
+    margin-right: 1rem;
+    color: #333;
+}
+#passwordIcon1{
+    position: absolute;
+    left: 2rem;
+    top: 7.5rem;
+    margin-right: 1rem;
+    color: #333;
+}
+#passwordIcon2{
+    position: absolute;
+    left: 2rem;
+    top: 11rem;
+    margin-right: 1rem;
+    color: #333;
+}
+.login-btn{
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #36C0C9;
+    color: #fff;
+    margin-top: 1rem;
+}
+form{
+align-self: center;
+}
+.login-form p,h1{
+    text-align: center;
+}
+.login-title{
+    color: #36C0C9;
+    font-size: 23px;
+    padding-bottom: 2rem;
+}
+
+span{
+    color: #36C0C9;
+    font-weight: 500;
+}
+
+.return-btn{
+    width: 500px;
+    height: 50px;
+    margin: 3rem auto;
+    background-color: #36C0C9;
+    border: none;
+    border-radius: 10px;
+    
+}
+#homeIcon{
+    padding-right: 2rem;
+}
+.return-btn a{
+    text-decoration: none;
+   color: #fff;
+   font-weight: bold;
+   font-size: 18px;
+}
+span a{
+    text-decoration: none;
+    color: #36C0C9;
+}
+
+
+@media screen and (max-width:1100px) {
+
+    .wrapper{
+        width: 500px;
+        height: 600px;
+        flex-wrap: wrap;
+    }
+    #login-image{
+        display: none;
+    }
+    .return-btn{
+        width: 500px;
+        margin-bottom:100px ;
+        height: 40px;
+        border-radius: 5px;
+    
+    
+    }
+
+    
+}
+
+@media screen and (max-width:600px) {
+
+
+    .wrapper{
+        width: 350px;
+        height: 500px;
+            flex-wrap: wrap;
+    }
+    #login-image{
+        display: none;
+    }
+  form input{
+    width: 300px;
+
+  }
+
+  .login-btn{
+    height: 35px;
+}
+.return-btn{
+    width: 350px;
+    margin-bottom:200px ;
+    height: 35px;
+    border-radius: 5px;
+
+
+}
+
+    
+}
+
