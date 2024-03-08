@@ -96,9 +96,13 @@ font-family: 'poppins';
     border-radius: 5px;
     font-weight: bold;
     font-size: 20px;
-    background-color: #36C0C9;
+    background-color: #36C0C9; 
+    padding-right: 3rem;
     color: #fff;
     margin-top: 1rem;
+}
+.login-btn:hover{
+    background-color: #2f8a90;
 }
 form{
 align-self: center;
@@ -125,6 +129,9 @@ span{
     border: none;
     border-radius: 10px;
     
+}
+.return-btn:hover{
+    background-color: #2f8a90;
 }
 #homeIcon{
     padding-right: 2rem;

@@ -22,13 +22,13 @@
 
         <ul class="nav-links" id="navLinks">
             <li><a href="./home.html"class="links">Home</a></li>
-            <li><a href="./about.html"class="links">About</a></li>
+            <li><a href="./About.html"class="links">About</a></li>
             <li><a href="./blog.html"class="links">Blog</a></li>
             <li><a href="./portfolio.html"class="links">My work</a></li>
             <li><a href="./skills.html"class="links">Skills</a></li>
             <li><a href="./contact.html"class="links">Contact</a></li>
         </ul>
-        <button class="login-btn"><a href="./login.html">Sign In</a></button>
+        <!-- <button class="login-btn"><a href="./login.html">Sign In</a></button> -->
         </header>
         
         <main class="blog-wrapper">
@@ -43,9 +43,13 @@
                             <h3>Iwork Project</h3>
                             <p class="blog-descript">Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.</p>
                             <span class="blog-comment">
-                                <i class="fa-solid fa-thumbs-up"></i> 
+                                <i class="fa-regular fa-thumbs-up" class="like-icon"  id="likeIcon"></i>
+                                <span style="font-size: 13px; font-weight: 500px;">45</span>
+                               <a href="./blogdetails.html">
                                 <i class="fa-regular fa-comment-dots"></i>
-                                <button class="read-more">Read More</button>
+                               </a> 
+                                
+                               <a href="./blogdetails.html"><button class="read-more">Read More</button></a> 
                             </span>
                         </div>
                     </div>
@@ -59,9 +63,10 @@
                             <h3>Iwork Project</h3>
                             <p class="blog-descript">Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.</p>
                             <span class="blog-comment">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                                <i class="fa-regular fa-thumbs-up"  id="likeIcon"></i>
+                                <span style="font-size: 13px; font-weight: 500px;">45</span>
                                 <i class="fa-regular fa-comment-dots"></i>
-                                <button class="read-more">Read More</button>
+                                <a href="./blogdetails.html"><button class="read-more">Read More</button></a> 
                             </span>
                         </div>
                     </div>
@@ -75,9 +80,10 @@
                             <h3>Iwork Project</h3>
                             <p class="blog-descript">Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.</p>
                             <span class="blog-comment">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                                <i class="fa-regular fa-thumbs-up"  id="likeIcon"></i>
+                                <span style="font-size: 13px; font-weight: 500px;">6</span>
                                 <i class="fa-regular fa-comment-dots"></i>
-                                <button class="read-more">Read More</button>
+                                <a href="./blogdetails.html"><button class="read-more">Read More</button></a> 
                             </span>
                         </div>
                     </div>
@@ -91,9 +97,11 @@
                             <h3>Iwork Project</h3>
                             <p class="blog-descript">Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.</p>
                             <span class="blog-comment">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                                <i class="fa-regular fa-thumbs-up"  id="likeIcon"></i>
+                                <span style="font-size: 13px; font-weight: 500px;">8</span>
                                 <i class="fa-regular fa-comment-dots"></i>
-                                <button class="read-more">Read More</button>
+                                
+                                <a href="./blogdetails.html"><button class="read-more">Read More</button></a> 
                             </span>
                         </div>
                     </div>
@@ -107,9 +115,10 @@
                             <h3>Iwork Project</h3>
                             <p class="blog-descript">Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.</p>
                             <span class="blog-comment">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                                <i class="fa-regular fa-thumbs-up" id="likeIcon"></i>
+                                <span style="font-size: 13px; font-weight: 500px;">15</span>
                                 <i class="fa-regular fa-comment-dots"></i>
-                                <button class="read-more">Read More</button>
+                                <a href="./blogdetails.html"><button class="read-more">Read More</button></a> 
                             </span>
                         </div>
                     </div>
@@ -123,9 +132,10 @@
                             <h3>Iwork Project</h3>
                             <p class="blog-descript">Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.</p>
                             <span class="blog-comment">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                                <i class="fa-regular fa-thumbs-up"  id="likeIcon"></i>
+                                <span style="font-size: 13px; font-weight: 500px;">4</span>
                                 <i class="fa-regular fa-comment-dots"></i>
-                                <button class="read-more">Read More</button>
+                                <a href="./blogdetails.html"><button class="read-more">Read More</button></a> 
                             </span>
                         </div>
                     </div>
@@ -149,24 +159,26 @@
             
                 <img src="./images/Brand-footer.png" alt="my-logo" id="brand-footer">
             
-                            <div>
-                               <p class="footer-title">My platforms</p>
-                               <span class="social-media-links">
-            
-                                   <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                                   <i class="fa fa-github"></i>
-                                   <i class="fa fa-twitter"></i>
-                
-                               </span>
-                            </div>
+
                 
                             <div class="quick-links">
                                 <p class="footer-title">Quick-links</p>
-                                <p>My work</p>
-                                <p>About me</p>
-                                <p>Home</p>
-                                <p>Contact</p>
+                                <a href="./portfolio.html"><p>My work</p></a>  
+                                <a href="./About.html"><p>About me</p></a>  
+                                <a href="./Home.html"><p>Home</p></a>  
+                                 <a href="./contact.html"> <p>Contact</p></a>
                             </div>
+
+                            <div>
+                                <p class="footer-title">My platforms</p>
+                                <span class="social-media-links">
+             
+                                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                    <i class="fa fa-github"></i>
+                                    <i class="fa fa-twitter"></i>
+                 
+                                </span>
+                             </div>
                         </div>
                         <p class="copyright">copyright &copy; Ismael 2024.All rights reserved.</p>
         
