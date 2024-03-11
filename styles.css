@@ -140,7 +140,7 @@ padding-bottom: 300px;
 
 .social-media-links:hover{
     transform: translateY(10px);
-    animation: animated 3s ease-in-out 0.1s 4 forwards ;
+    animation: animated 1s ease-in-out 0.1s 1 forwards ;
 
 }
 
@@ -540,9 +540,6 @@ color: #36C0C9;
  position: relative;
   }
 
-  #likeIcon:active{
-    color: #36C0C9;
-  }
 
 
 .read-more{
@@ -676,6 +673,14 @@ form{
     top: 3.7rem;
      
 }
+
+.blog-form form a{
+    text-decoration: none;
+  }
+
+
+
+
 
 
 

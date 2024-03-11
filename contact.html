@@ -31,12 +31,12 @@
         </header>
         <main class="contact-content">
 
-            <form action="" >
+            <form action="" method="post" >
               <label for="" class="contact-form-title">YOU CAN REACH OUT TO ME</label> <br>
-                <input type="text" name="name" id="name" class="input-boxes" placeholder="Enter your name"><br>
-                <input type="text" name="email" id="email" class="input-boxes" placeholder="Enter your email"><br>
-                <textarea name="message" id="text-area" cols="30" rows="10">Your message</textarea><br>
-                <a href="./Home.html"><input type="button" name="submit" id="submit-btn" value="SUBMIT"></a>
+                <input type="text" name="name" id="name" class="input-boxes" placeholder="Enter your name" required><br>
+                <input type="email" name="email" id="email" class="input-boxes" placeholder="Enter your email" required><br>
+                <textarea name="message" id="text-area" cols="30" rows="10" placeholder="Your message" required></textarea><br>
+                <input type="submit" id="submit-btn" value="submit">
             </form> 
             <div class="vertical-line"></div>
 

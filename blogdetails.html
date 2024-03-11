@@ -28,7 +28,7 @@
             <li><a href="./skills.html"class="links">Skills</a></li>
             <li><a href="./contact.html"class="links">Contact</a></li>
         </ul>
-        <button class="login-btn"><a href="./login-page.html">Sign In</a></button>
+        <button class="login-btn"><a href="./login.html">Sign In</a></button>
         </header>
 
         <div class="blog-detail-wrapper">
@@ -94,13 +94,13 @@
             </div>
             <div class="blog-form">
                 <h3>YOUR FEEDBACK IS OF GREAT VALUE TO US</h3>
-                <form action="">
+                <form action="./dashboard/dashboard.html" method="POST">
                     <i class="fa-solid fa-user" id="usericon"  ></i>
-                    <input type="text"  placeholder=" Username"> <br>
+                    <input type="text"  placeholder=" Username" required> <br>
                     <i class="fa-solid fa-envelope"  id="emailicon1" ></i>
-                    <input type="email"  placeholder=" Username"> <br>
-                    <textarea name="message" id="text-area" cols="30" rows="10">Your message</textarea><br>
-                    <input type="button" name="submit" id="submit-btn" value="SUBMIT">
+                    <input type="email"  placeholder=" Username" required> <br>
+                    <textarea name="message" id="text-area" cols="30" rows="10" placeholder="Your message" required></textarea><br>
+                   <input type="submit"  id="submit-btn" value="submit">
                 </form>
             </div>
         </div>
