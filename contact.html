@@ -20,7 +20,7 @@
         </figure>
       <img src="./images/burger-menu.png" alt="hamburger-menu" class="hamburger-menu" id="hamburgerMenu">
         <ul class="nav-links" id="navLinks">
-            <li><a href="./Home.html"class="links">Home</a></li>
+            <li><a href="./index.html"class="links">Home</a></li>
             <li><a href="./About.html"class="links">About</a></li>
             <li><a href="./blog.html"class="links">Blog</a></li>
             <li><a href="./portfolio.html"class="links">My work</a></li>
@@ -32,12 +32,25 @@
         <main class="contact-content">
 
             <form action="" method="post" >
-              <label for="" class="contact-form-title">YOU CAN REACH OUT TO ME</label> <br>
-                <input type="text" name="name" id="name" class="input-boxes" placeholder="Enter your name" required><br>
-                <input type="email" name="email" id="email" class="input-boxes" placeholder="Enter your email" required><br>
-                <textarea name="message" id="text-area" cols="30" rows="10" placeholder="Your message" required></textarea><br>
-                <input type="submit" id="submit-btn" value="submit">
+             <label for="" class="contact-form-title">YOU CAN REACH OUT TO ME</label> <br>
+             <div class="input-group">
+                 <input type="text" name="name"  class="input-boxes" placeholder="Enter your name" id="contact-name" onkeyup="validateName()" ><br>
+                 <small id="name-error"></small>
+             </div>
+             <div class="input-group">
+                 <input type="email" name="email"  class="input-boxes" placeholder="Enter your email" id="contact-email" onkeyup="validateEmail()"><br>
+                <small id="email-error"></small>
+             </div>
+                 <div class="input-group">
+                     <textarea name="message" class="text-area" cols="30" rows="10" placeholder="Your message" id="contact-message" onkeyup="validateMessage()"></textarea><br>
+                     <small id="message-error"></small>
+                 </div>
+                <button  id="submit-btn" value="submit" onclick="return validateForm" >Submit</button>
+                <span id="submit-error"></span>
             </form> 
+
+
+            
             <div class="vertical-line"></div>
 
             <div class="contact-info">
@@ -64,7 +77,7 @@
             <div class="footer">
     
                 
-                    <img src="./images/Brand-footer.png" alt="my-logo" id="brand-footer">
+                    <img src="./images/real-brand.png" alt="my-logo" id="brand-footer">
                 
 
                     
@@ -72,7 +85,7 @@
                                     <p class="footer-title">Quick-links</p>
                                     <a href="./portfolio.html"><p>My work</p></a>  
                                     <a href="./About.html"><p>About me</p></a>  
-                                    <a href="./Home.html"><p>Home</p></a>  
+                                    <a href="./index.html"><p>Home</p></a>  
                                      <a href="./contact.html"> <p>Contact</p></a>
                                 </div>
 
@@ -91,7 +104,7 @@
                 <p class="copyright">copyright &copy; Ismael 2024.All rights reserved.</p>
             </footer>
         </div>
-    <script src="./script.js"></script>
+    <script src="./contactform.js"></script>
     </body>
     </html>
     

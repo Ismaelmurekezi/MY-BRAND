@@ -62,11 +62,13 @@ align-items: center;
 
 }
 .nav-links a{
-    transition: font-size 1s;
+    transition: font-size 0.5s;
 }
 .nav-links a:hover{
     color: aquamarine;
     font-size: 23px;
+    font-weight: 500;
+
 
 }
 
@@ -98,6 +100,7 @@ align-items: center;
     font-weight: 500;
     transform: translateY(2px);
 }
+
 
 
 /* MAIN STYLES */
@@ -257,7 +260,7 @@ padding-bottom: 300px;
       font-family: 'Poppins', sans-serif;
       margin-top: 10px;
   }
-  #text-area{
+  .text-area{
       width: 400px;
       margin-top: 10px;
       font-family: 'Poppins', sans-serif;
@@ -312,6 +315,14 @@ padding-bottom: 300px;
     text-decoration: none;
   }
 
+
+  .input-group small{
+    color: #fe0000;
+  }
+
+  #submit-error{
+    color: #fe0000;
+  }
 
   
   
@@ -517,6 +528,19 @@ color: #36C0C9;
     column-gap: 3rem;
     row-gap: 1.5rem;
   }
+
+  .blog-box{
+    border: none;
+    border-radius: 10px;
+    transition: all .2s ease-in-out  ;
+  }
+
+  .blog-box:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px -3px #76dae2;
+
+
+  }
   .blog-image{
     width: 100%;
   }
@@ -529,6 +553,15 @@ color: #36C0C9;
     font-size: 13px;
     color: #514d4d;
   }
+
+  .blog-content{
+    background-color: #fff;
+    padding: 20px;
+    color: #000;
+    border-radius: 0 0 10px 10px;
+    margin-top: -7px;
+    }
+
   .blog-content h3{
     color: #36C0C9;
   }
@@ -558,12 +591,7 @@ color: #36C0C9;
     background-color: #4a91e2;
     color: #fff;
 }
-.blog-content{
-    background-color: #fff;
-    padding: 20px;
-    color: #000;
-    border-radius: 0 0 10px 10px;
-}
+
 
 /* BLOG DETAIL PAGE */
 
@@ -604,7 +632,7 @@ color: #36C0C9;
 .blog-form{
     margin-left: 4rem;
     width: 600px;
-    height: 500px;
+    height: fit-content;
     background-color: #100F3D;
     display: flex;
     flex-direction: column;
@@ -653,6 +681,7 @@ figcaption{
     gap: 1rem;
     height: 30px;
 }
+
 form{
     position: relative;
     padding-bottom: 2rem;
@@ -680,6 +709,53 @@ form{
 
 
 
+  /* POPUP-MESSAGE */
+
+
+
+
+
+  .popup {
+      width: 400px;
+      background-color: #fff;
+      border-radius: 6px;
+      position: absolute;
+      top: 90%;
+      left: 50%;
+      text-align: center;
+      padding: 0 30px 30px;
+      color: #333;
+      visibility: hidden;
+   
+  }
+
+
+  .popup img {
+      width: 80px;
+      padding-top:10px ;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .popup h2 {
+      font-size: 38px;
+      font-weight: 500;
+      margin: 30px 0 10px;
+  }
+
+  .popup button {
+      width: 100%;
+      margin-top: 50px;
+      padding: 10px 0;
+      background-color: rgb(20, 209, 102);
+      color: #fff;
+      border: 0;
+      outline: none;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  }
 
 
 

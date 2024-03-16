@@ -24,9 +24,12 @@ body{
     margin: auto;
     background-color: #100F3D;
 }
-form{
+#form{
     position: relative;
 }
+
+
+
 .login-form{
     width: 500px;
     height: 720px;
@@ -57,7 +60,7 @@ font-family: 'poppins';
 #usericon{
     position: absolute;
     left: 2rem;
-    top: 0.35rem;
+    top: 0.6rem;
     margin-right: 1rem;
     color: #333;
 }
@@ -72,21 +75,21 @@ font-family: 'poppins';
 #emailIcon{
     position: absolute;
     left: 2rem;
-    top: 4rem;
+    top: 0.6rem;
     margin-right: 1rem;
     color: #333;
 }
 #passwordIcon1{
     position: absolute;
     left: 2rem;
-    top: 7.5rem;
+    top: 0.5rem;
     margin-right: 1rem;
     color: #333;
 }
 #passwordIcon2{
     position: absolute;
     left: 2rem;
-    top: 11rem;
+    top: 0.5rem;
     margin-right: 1rem;
     color: #333;
 }
@@ -146,6 +149,34 @@ span a{
     text-decoration: none;
     color: #36C0C9;
 }
+.form-control{
+    position: relative;
+}
+
+.form-control small{
+    visibility: hidden;
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    
+}
+
+.form-control.error small{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-control.success input{
+  border: 2px solid #2ecc71;
+
+}
+.form-control.error input{
+  border: 2px solid #e74c3c;  
+}
+
+#submit-error {
+    color: seagreen;
+}
 
 
 @media screen and (max-width:1100px) {
@@ -155,7 +186,8 @@ span a{
         height: 600px;
         flex-wrap: wrap;
     }
-    #login-image{
+ 
+    #sign-up{
         display: none;
     }
     .return-btn{

@@ -14,25 +14,38 @@
 <body>  
  
    <div class="wrapper">
-    <img src="./images/handshake.jpg" alt="login-image" id="login-image">
+    <img src="./images/handshake.jpg" alt="login-image" class="login-image" id="sign-up">
 
     <div class="login-form">
         <h1 class="login-title">CREATE AN ACCOUNT</h1>
-        <form action="">
-            <i class="fa-solid fa-user" id="usericon"></i>
-          <input type="text"  placeholder=" Username"> <br>
-          <i class="fa-solid fa-envelope" id="emailIcon"></i>
-          <input type="email"  placeholder=" Email"> <br>
-          <i class="fa-solid fa-lock" id="passwordIcon1"></i>
-          <input type="password" placeholder="Password"> <br>
-          <i class="fa-solid fa-lock" id="passwordIcon2"></i>
-          <input type="password" placeholder="Confirm password"> <br>
-       <a href="./dashboard.html"> <input type="button" class="login-btn" value="Sign up"></a>
+        <form action="" id="form">
+            <div class="form-control">
+                <i class="fa-solid fa-user" id="usericon"></i>
+              <input type="text"  placeholder=" Username" id="username"> <br>
+               <small>Error message</small>
+            </div>
+            <div class="form-control ">
+                <i class="fa-solid fa-envelope" id="emailIcon"></i>
+                <input type="email"  placeholder=" Email" id="email"> <br>
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <i class="fa-solid fa-lock" id="passwordIcon1"></i>
+                <input type="password" placeholder="Password" id="password"> <br>
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <i class="fa-solid fa-lock" id="passwordIcon2"></i>
+                <input type="password" placeholder="Confirm password" id="confirm-password"> <br>
+                <small>Error Message</small>
+            </div>
+      <input type="submit" class="login-btn" value="Sign up" >
         </form>
         <p>Already have an account <span><a href="./login.html">Login</a></span></p>
     </div>
 </div> 
-<button class="return-btn"><a href="./Home.html"><i class="fa-solid fa-house" id="homeIcon"></i>BACK TO HOME</a></button>
+<button class="return-btn"><a href="./index.html"><i class="fa-solid fa-house" id="homeIcon"></i>BACK TO HOME</a></button>
 <script src="https://kit.fontawesome.com/ffd0b0bd60.js" crossorigin="anonymous"></script>
+<script src="./formvalidate.js"></script>
 </body>
 </html>

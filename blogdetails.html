@@ -21,7 +21,7 @@
       <img src="./images/burger-menu.png" alt="hamburger-menu" class="hamburger-menu" id="hamburgerMenu">
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="./Home.html"class="links">Home</a></li>
+            <li><a href="./index.html"class="links">Home</a></li>
             <li><a href="./About.html"class="links">About</a></li>
             <li><a href="./blog.html"class="links">Blog</a></li>
             <li><a href="./portfolio.html"class="links">My work</a></li>
@@ -92,19 +92,39 @@
                 
 
             </div>
+
+
+            
+                <div class="popup" id="popup">
+                    <img src="./images/success.png" alt="success-icon">
+                    <h2>Thank you!</h2>
+                    <p>Your feedback send successful!</p>
+                    <button type="button" onclick="closePopup()">OK</button>
+                </div>
+
             <div class="blog-form">
                 <h3>YOUR FEEDBACK IS OF GREAT VALUE TO US</h3>
-                <form action="./dashboard/dashboard.html" method="POST">
-                    <i class="fa-solid fa-user" id="usericon"  ></i>
-                    <input type="text"  placeholder=" Username" required> <br>
-                    <i class="fa-solid fa-envelope"  id="emailicon1" ></i>
-                    <input type="email"  placeholder=" Username" required> <br>
-                    <textarea name="message" id="text-area" cols="30" rows="10" placeholder="Your message" required></textarea><br>
-                   <input type="submit"  id="submit-btn" value="submit">
+                <form action="" >
+                    <div class="input-group">
+                        <!-- <i class="fa-solid fa-user" id="usericon"  ></i> -->
+                        <input type="text"  placeholder=" Enter Full Name" id="username" onkeyup="validateName1()"> <br>
+                        <small id="name-error"></small>
+                    </div>
+                    <div class="input-group">
+                        <!-- <i class="fa-solid fa-envelope"  id="emailicon1" ></i> -->
+                        <input type="email"  placeholder="Enter  email" id="email" onkeyup="validateEmail()"> <br>
+                        <small id="email-error"></small>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="message" id="contact-message" class="text-area" cols="30" rows="10" placeholder="Your message" onkeyup="validateMessage()"></textarea><br>
+                        <small id="message-error"></small>
+                    </div>
+                  <button id="submit-btn" >Submit</button>
+                   <small id="submit-error"></small>
                 </form>
             </div>
         </div>
         <script src="https://kit.fontawesome.com/ffd0b0bd60.js" crossorigin="anonymous"></script>
-        <script src="./script.js"></script> 
+        <script src="./blogContact.js"></script> 
 </body>
 </html>
