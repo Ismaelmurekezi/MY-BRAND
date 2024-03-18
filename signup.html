@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY Portofolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MY Portofolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" />
 
-
-    <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="./login.css" />
 </head>
-<body>  
- 
-   <div class="wrapper">
-    <img src="./images/handshake.jpg" alt="login-image" class="login-image" id="sign-up">
+
+<body>
+  <div class="wrapper">
+    <img src="./images/handshake.jpg" alt="login-image" class="login-image" id="sign-up" />
 
     <div class="login-form">
-        <h1 class="login-title">CREATE AN ACCOUNT</h1>
-        <form action="" id="form">
-            <div class="form-control">
-                <i class="fa-solid fa-user" id="usericon"></i>
-              <input type="text"  placeholder=" Username" id="username"> <br>
-               <small>Error message</small>
-            </div>
-            <div class="form-control ">
-                <i class="fa-solid fa-envelope" id="emailIcon"></i>
-                <input type="email"  placeholder=" Email" id="email"> <br>
-                <small>Error Message</small>
-            </div>
-            <div class="form-control">
-                <i class="fa-solid fa-lock" id="passwordIcon1"></i>
-                <input type="password" placeholder="Password" id="password"> <br>
-                <small>Error Message</small>
-            </div>
-            <div class="form-control">
-                <i class="fa-solid fa-lock" id="passwordIcon2"></i>
-                <input type="password" placeholder="Confirm password" id="confirm-password"> <br>
-                <small>Error Message</small>
-            </div>
-      <input type="submit" class="login-btn" value="Sign up" >
-        </form>
-        <p>Already have an account <span><a href="./login.html">Login</a></span></p>
+      <h1 class="login-title">CREATE AN ACCOUNT</h1>
+      <form action="" id="form">
+        <div class="form-control">
+          <i class="fa-solid fa-user" id="usericon"></i>
+          <input type="text" placeholder="Username" id="username" onkeyup="validateName()" /> <br />
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <i class="fa-solid fa-envelope" id="emailIcon"></i>
+          <input type="email" placeholder=" Email" id="email" onkeyup="validateEmail()" /> <br />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <i class="fa-solid fa-lock" id="passwordIcon1"></i>
+          <input type="password" placeholder="Password" id="password" onkeyup="validatePassword()" />
+          <br />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <i class="fa-solid fa-lock" id="passwordIcon2"></i>
+          <input type="password" placeholder="Confirm password" id="confirm-password"
+            onkeyup="validateConfirmPassword()" />
+          <br />
+          <small>Error Message</small>
+        </div>
+        <input type="submit" class="login-btn" value="Sign up" />
+      </form>
+      <p>
+        Already have an account <span><a href="./login.html">Login</a></span>
+      </p>
     </div>
-</div> 
-<button class="return-btn"><a href="./index.html"><i class="fa-solid fa-house" id="homeIcon"></i>BACK TO HOME</a></button>
-<script src="https://kit.fontawesome.com/ffd0b0bd60.js" crossorigin="anonymous"></script>
-<script src="./formvalidate.js"></script>
+  </div>
+  <button class="return-btn">
+    <a href="./index.html"><i class="fa-solid fa-house" id="homeIcon"></i>BACK TO HOME</a>
+  </button>
+  <script src="https://kit.fontawesome.com/ffd0b0bd60.js" crossorigin="anonymous"></script>
+  <script src="./formvalidate.js"></script>
 </body>
+
 </html>
