@@ -193,9 +193,12 @@ th {
 }
 .blog-image {
   width: 100%;
+  max-height: 40%;
 }
 .blog-descript {
   width: 350px;
+  height: 40px;
+  overflow: hidden;
 }
 
 .title {
@@ -209,8 +212,9 @@ th {
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 10px;
   position: relative;
+  margin-bottom: -10px;
 }
 
 #likeIcon {
@@ -351,56 +355,109 @@ a {
 
 /* NEW BLOG STYLES*/
 
-.blog-wrapper {
+.blog-container {
+  height: 400px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  color: #fff;
-  /* height: 100vh; */
-  margin-top: 7rem;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.blog-box {
+  height: 400px;
+}
+
+.blog-content {
+  background-color: #fff;
+  padding: 20px;
+  color: #000;
+  margin-top: -10px;
+  width: 350px;
+  max-height: 50%;
+  overflow: hidden;
+  font-size: 13px;
+  font-family: "nunito sans";
 }
 
 .blog-form {
   background-color: #100f3d;
-  width: 1000px;
+  width: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  font-family: "poppins";
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px -3px #76dae2;
+  z-index: 1;
+  padding-top: 2rem;
+  position: absolute;
+  top: 100px;
+  left: 330px;
+  visibility: hidden;
+}
+.blog-form h2 {
+  text-align: center;
+  color: #36c0c9;
+  padding: 2rem 0;
 }
 
 .blog-form > input {
-  width: 700px;
-  height: 30px;
+  width: 670px;
+  height: 35px;
   padding-left: 2rem;
-  margin-left: 1rem;
-
-  font-size: 18px;
+  font-family: "poppins";
+  font-size: 14px;
   border: none;
+  border-radius: 5px;
 }
 
 #blog-intro-content {
   width: 700px;
-  height: 200px;
+  height: 150px;
   margin-left: 1rem;
   margin-top: 10px;
   margin: 10px 10px 10px 20px;
-  padding: 3rem;
+  padding-left: 2rem;
+  font-family: "poppins";
+  border-radius: 5px;
 }
 
 #blogContent {
-  width: 850px;
-  height: 300px;
+  width: 700px;
+  height: 200px;
   margin-left: 1rem;
   padding: 3rem;
   margin-bottom: 1rem;
+  font-family: "poppins";
+  border-radius: 5px;
 }
 #blogPost {
-  background-color: #36c0c9;
   width: 700px;
   height: 50px;
+  background-color: #36c0c9;
   border: none;
+  border-radius: 12px;
   margin: 0 auto;
   margin-bottom: 1rem;
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.return {
+  height: 50px;
+  width: 750px;
+  border: 2px solid #36c0c9;
+  background-color: rgb(0, 0, 0, 0);
+  color: #36c0c9;
+  margin-top: 3rem;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: all 0.9s;
+}
+
+.return:hover {
+  background-color: #36c0c9;
+  color: #fff;
 }
