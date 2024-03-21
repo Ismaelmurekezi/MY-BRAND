@@ -13,35 +13,35 @@ form.addEventListener("submit", function (event) {
   verifyUser();
 });
 
-function validateName() {
-  const usernameValue = username.value.trim();
+// function validateName() {
+//   const usernameValue = username.value.trim();
 
-  if (usernameValue === "") {
-    errorMessage(username, "username is required field");
-    return false;
-  } else if (!usernameValue.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
-    errorMessage(username, "Write full name");
-    return false;
-  } else {
-    successMessage(username);
-    return true;
-  }
-}
+//   if (usernameValue === "") {
+//     errorMessage(username, "username is required field");
+//     return false;
+//   } else if (!usernameValue.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+//     errorMessage(username, "Write full name");
+//     return false;
+//   } else {
+//     successMessage(username);
+//     return true;
+//   }
+// }
 
-function validatePassword() {
-  const passwordValue = password.value.trim();
+// function validatePassword() {
+//   const passwordValue = password.value.trim();
 
-  if (passwordValue === "") {
-    errorMessage(password, "Password is required field");
-    return false;
-  } else if (passwordValue.length < 8) {
-    errorMessage(password, "Password cannot less than 8");
-    return false;
-  } else {
-    successMessage(password);
-    return true;
-  }
-}
+//   if (passwordValue === "") {
+//     errorMessage(password, "Password is required field");
+//     return false;
+//   } else if (passwordValue.length < 8) {
+//     errorMessage(password, "Password cannot less than 8");
+//     return false;
+//   } else {
+//     successMessage(password);
+//     return true;
+//   }
+// }
 
 function verifyUser() {
   let user1 = JSON.parse(localStorage.getItem("userInfo"));
@@ -49,7 +49,12 @@ function verifyUser() {
   //check if inputed userInfo is same to those in localstorage
 
   if (username.value === user1.username && password.value === user1.password) {
-    window.location.href = "./dashboard/dashboard.html";
+    document.getElementById("popups").style.visibility = "visible";
+
+    setTimeout(() => {
+      document.getElementById("popups").style.visibility = "hidden";
+      window.location.href = "./dashboard/dashboard.html";
+    }, 3000);
   } else {
     alert("Invalid ");
   }

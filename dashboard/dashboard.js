@@ -6,10 +6,12 @@ let imageCaption = document.getElementById("image-caption");
 let blogIntro = document.getElementById("blog-intro-content");
 let blogContent = document.getElementById("blogContent");
 let postBlogBtn = document.getElementById("blogPost");
+let blogForm = document.getElementById("blog-form");
+let likeHolder = document.getElementById("like-holder");
 
-// Retrieve existing blog data from local storage, or initialize an empty array if none exists
+// Retrieve existing blog data  or initialize an empty array if none exists
 let container = JSON.parse(localStorage.getItem("contents")) || [];
-let lastId = parseInt(localStorage.getItem("lastId")) || 0; // Retrieve last used ID
+let lastId = parseInt(localStorage.getItem("lastId")) || 0;
 
 postBlogBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -24,6 +26,7 @@ postBlogBtn.addEventListener("click", (e) => {
   let caption = imageCaption.value;
   let Intro = blogIntro.value;
   let Content = blogContent.value;
+  let like = likeHolder.value;
 
   // storing image to local storage
 
@@ -37,6 +40,7 @@ postBlogBtn.addEventListener("click", (e) => {
       subTitles: subTitles,
       subject: subject,
       image: imageUrl,
+      like: like,
       caption: caption,
       Intro: Intro,
       Content: Content,
@@ -97,11 +101,11 @@ function showData() {
                         <img src="../images/trash.png" alt="delete-icon" class="icons" onclick="deleteBlog(${item.id})">
                         <h3>${item.Title}</h3>
                         <p class="blog-descript">${item.Intro}</p>
-                        <span class="blog-comment">
-                            <img src="../images/like.png" alt="like-icon" id="likeIcon" class="icons">
-                            <span style="font-size: 13px; font-weight: 500px;">45</span>
-                            <i class="fa-regular fa-comment-dots"></i>
-                            <a href="./blogdetails.html"><button class="read-more">Read More</button></a>
+                        <span class="blog-comment" >
+                            <i class="far fa-thumbs-up" id="like-icon"></i>
+                            <span style="font-size: 13px; font-weight: 500px;" id="like-holder">0</span>
+                          <i class="far fa-comment" id="comment-icon"></i>
+                         <button class="read-more" id="read-more">Read More</button>
                         </span>
              
                 </div>
@@ -183,11 +187,22 @@ document.getElementById("blogPost").addEventListener("click", function () {
       formData.splice(index, 1);
     }
 
-    // Update the formData array in local storage
+    // Update the formData
     localStorage.setItem("contents", JSON.stringify(formData));
 
     localStorage.removeItem("editId");
 
     location.reload();
   }
+});
+let counter = 0;
+
+document.getElementById("like-icon").addEventListener("click", () => {
+  counter += 1;
+  document.getElementById("like-holder").innerHTML = counter;
+});
+
+document.querySelector(".read-more").addEventListener("click", () => {
+  alert("working");
+  // document.location.href = "../blogdetails.html";
 });

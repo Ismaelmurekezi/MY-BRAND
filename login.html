@@ -15,19 +15,28 @@
 </head>
 
 <body>
+  <!-- popup message -->
+  <div class="popup" id="popups">
+    <img src="./images/success.png" alt="success-icon">
+    <h2>Welcome back!</h2>
+    <p>You've logged in Successful</p>
+    <button type="button" onclick="closePopup()">OK</button>
+  </div>
+
   <div class="wrapper">
+
     <div class="login-form">
       <h1 class="login-title">WELCOME TO LOGIN PAGE</h1>
       <form action="" id="forms">
         <div class="form-control">
           <i class="fa-solid fa-user" id="usericon"></i>
-          <input type="text" placeholder=" Username" id="username" onkeyup="validateName()" />
+          <input type="text" placeholder=" Username" id="username" />
           <br />
           <!-- <small id="name-error">Error message</small> -->
         </div>
         <div class="form-control">
           <i class="fa-solid fa-lock" id="passwordIcon1"></i>
-          <input type="password" placeholder="Password" id="password" onkeyup="validatePassword()" />
+          <input type="password" placeholder="Password" id="password" />
           <br />
           <!-- <small>Error Message</small> -->
         </div>

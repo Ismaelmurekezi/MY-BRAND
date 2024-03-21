@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.innerHTML = `
                          <div class="blog-box">
-                            <img src="../images/virtualimage.png" alt="virtual machine" class="blog-image">
+                         <img src="${item.image}" alt="Blog Image" class="blog-image"> 
                             <div class="blog-content">
 
                 <p>${item.subject}</p>
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <img src="../images/like.png" alt="like-icon" id="likeIcon" class="icons">
                     <span style="font-size: 13px; font-weight: 500px;">45</span>
                     <i class="fa-regular fa-comment-dots"></i>
-                    <a href="./blogdetails.html"><button class="read-more">Read More</button></a>
+                    <button class="read-more" id="read-more" onclick="fun(${item.id})">Read More</button>
                 </span>
                          </div>
                     </div>
@@ -59,3 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+//FUNCTION TO GET CONTENT OF BLOG WHILE I CLICK ON READ MORE BUTTON
+
+function fun(id) {
+  let cont = JSON.parse(localStorage.getItem("contents"));
+  let selectedBlog = cont.find((item) => item.id === id);
+
+  // Redirect to blogdetail.html with query parameters
+  window.location.href = `blogdetails.html?id=${selectedBlog.id}&subject=${selectedBlog.subject}&title=${selectedBlog.Title}&intro=${selectedBlog.Intro}&content=${selectedBlog.Content}&subTitles=${selectedBlog.subTitles}`;
+}
