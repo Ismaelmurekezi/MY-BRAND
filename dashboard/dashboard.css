@@ -459,3 +459,52 @@ a {
   background-color: #36c0c9;
   color: #fff;
 }
+
+/* MESSAGE FEEDBACK STYLES */
+
+#message-box {
+  width: 600px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  background-color: #100f3d;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 20px 0;
+  z-index: 1;
+  margin: -100px auto;
+  visibility: hidden;
+}
+
+#message-box div {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-left: 80px;
+}
+#message-title {
+  color: #36c0c9;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#message-box div label {
+  color: #36c0c9;
+  font-size: 18px;
+}
+
+#dismiss-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #36c0c9;
+  color: #fff;
+}
+
+#dismiss-btn:hover {
+  background-color: rgb(0, 0, 0, 0);
+  color: #36c0c9;
+  border: 1px solid #36c0c9;
+}

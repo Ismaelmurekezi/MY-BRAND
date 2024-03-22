@@ -131,7 +131,7 @@ function deleteBlog(id) {
   location.reload();
 }
 
-//EDIT FUNCTION
+// EDIT FUNCTION
 function editBlog(id) {
   let formData = JSON.parse(localStorage.getItem("contents"));
   let selectedBlog = formData.find((item) => item.id === id);
@@ -142,7 +142,6 @@ function editBlog(id) {
   document.getElementById("main-concept").value = selectedBlog.subject;
   document.getElementById("btitle").value = selectedBlog.Title;
   document.getElementById("sub-title").value = selectedBlog.subTitles;
-  // document.getElementById("image-file").value = selectedBlog.image;
   document.getElementById("image-caption").value = selectedBlog.caption;
   document.getElementById("blog-intro-content").value = selectedBlog.Intro;
   document.getElementById("blogContent").value = selectedBlog.Content;
@@ -155,10 +154,7 @@ function editBlog(id) {
 }
 
 // UPDATE FUNCTION
-
 document.getElementById("blogPost").addEventListener("click", function () {
-  // alert("it is update");
-
   // getting the ID of the blog being edited
   let editId = JSON.parse(localStorage.getItem("editId"));
   let formData = JSON.parse(localStorage.getItem("contents"));
@@ -171,30 +167,30 @@ document.getElementById("blogPost").addEventListener("click", function () {
     formData[index].subject = document.getElementById("main-concept").value;
     formData[index].Title = document.getElementById("btitle").value;
     formData[index].subTitles = document.getElementById("sub-title").value;
-    // formData[index].image = document.getElementById("image-file").value;
     formData[index].caption = document.getElementById("image-caption").value;
     formData[index].Intro = document.getElementById("blog-intro-content").value;
     formData[index].Content = document.getElementById("blogContent").value;
 
-    // Remove the blog post if its content is empty
-    if (
-      formData[index].subject === "" &&
-      formData[index].Title === "" &&
-      formData[index].subTitles === "" &&
-      // formData[index].image === "" &&
-      formData[index].caption === "" &&
-      formData[index].Intro === "" &&
-      formData[index].Content === ""
-    ) {
-      formData.splice(index, 1);
+    // Check if a new image has been selected
+    if (document.getElementById("image-file").files.length > 0) {
+      const fr = new FileReader();
+      fr.readAsDataURL(document.getElementById("image-file").files[0]);
+      fr.addEventListener("load", () => {
+        formData[index].image = fr.result;
+
+        // Update the formData
+        localStorage.setItem("contents", JSON.stringify(formData));
+
+        // Refresh the page to show updated data
+        location.reload();
+      });
+    } else {
+      // Update the formData
+      localStorage.setItem("contents", JSON.stringify(formData));
+
+      // Refresh the page to show updated data
+      location.reload();
     }
-
-    // Update the formData
-    localStorage.setItem("contents", JSON.stringify(formData));
-
-    localStorage.removeItem("editId");
-
-    location.reload();
   }
 });
 
