@@ -3,6 +3,9 @@ const emailError = document.getElementById("email-error");
 const messageError = document.getElementById("message-error");
 let submitError = document.getElementById("submit-error");
 let names = document.getElementById("contact-name");
+const fullName = document.getElementById("contact-name");
+const email = document.getElementById("contact-email");
+const message = document.getElementById("contact-message");
 
 function validateName() {
   let name = document.getElementById("contact-name").value;
@@ -12,7 +15,7 @@ function validateName() {
     return false;
   }
   if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
-    nameError.innerHTML = "Write full name";
+    nameError.innerHTML = "Enter full name please";
     return false;
   }
   nameError.style.display = "none";
@@ -56,19 +59,30 @@ function validateMessage() {
   return true;
 }
 
-function validateForm() {
+document.getElementById("submit-btn").addEventListener("click", (e) => {
   e.preventDefault();
-  if (
-    !validateName() ||
-    !validatePhone() ||
-    !validateEmail() ||
-    !validateMessage()
-  ) {
-    submitError.style.display = "block";
-    submitError.innerHTML = "Please fix error to submit";
-    setTimeout(function () {
-      submitError.style.display = "none";
-    }, 3000);
-    return false;
+  let store = JSON.parse(localStorage.getItem("comments")) || [];
+  let lastMessageId = parseInt(localStorage.getItem("messageId")) || 0;
+
+  lastMessageId++;
+
+  let names = fullName.value;
+  let emails = email.value;
+  let messages = message.value;
+
+  if (validateName() || validateEmail() || validateMessage()) {
+    let comment = {
+      names: names,
+      email: emails,
+      message: messages,
+      lastMessageId: lastMessageId,
+    };
+
+    store.push(comment);
+    localStorage.setItem("comments", JSON.stringify(store));
+    localStorage.setItem("messageId", lastMessageId);
+    return true;
+  } else {
+    alert(" it not working, ");
   }
-}
+});

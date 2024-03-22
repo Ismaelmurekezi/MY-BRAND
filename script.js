@@ -43,9 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h3>${item.Title}</h3>
                 <p class="blog-descript">${item.Intro}</p>
                 <span class="blog-comment">
-                    <img src="../images/like.png" alt="like-icon" id="likeIcon" class="icons">
-                    <span style="font-size: 13px; font-weight: 500px;">45</span>
-                    <i class="fa-regular fa-comment-dots"></i>
+
+                            <i class="far fa-thumbs-up" id="like-icon" class="likeIcon"></i>
+
+                    <span style="font-size: 13px; font-weight: 500px;">0</span>
+                    <i class="fa-regular fa-comment-dots" id="commentIcon"></i>
                     <button class="read-more" id="read-more" onclick="fun(${item.id})">Read More</button>
                 </span>
                          </div>
@@ -69,3 +71,7 @@ function fun(id) {
   // Redirect to blogdetail.html with query parameters
   window.location.href = `blogdetails.html?id=${selectedBlog.id}&subject=${selectedBlog.subject}&title=${selectedBlog.Title}&intro=${selectedBlog.Intro}&content=${selectedBlog.Content}&subTitles=${selectedBlog.subTitles}`;
 }
+
+document.getElementById("likeIcon").addEventListener("click", () => {
+  alert("it is working");
+});

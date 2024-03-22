@@ -9,9 +9,9 @@ let postBlogBtn = document.getElementById("blogPost");
 let blogForm = document.getElementById("blog-form");
 let likeHolder = document.getElementById("like-holder");
 
-// Retrieve existing blog data  or initialize an empty array if none exists
+// getting existing blog data  or initialize an empty array if none exists
 let container = JSON.parse(localStorage.getItem("contents")) || [];
-let lastId = parseInt(localStorage.getItem("lastId")) || 0;
+let lastId = parseInt(localStorage.getItem("lastId")) || 1;
 
 postBlogBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -26,7 +26,7 @@ postBlogBtn.addEventListener("click", (e) => {
   let caption = imageCaption.value;
   let Intro = blogIntro.value;
   let Content = blogContent.value;
-  let like = likeHolder.value;
+  // let like = likeHolder.value;
 
   // storing image to local storage
 
@@ -35,14 +35,16 @@ postBlogBtn.addEventListener("click", (e) => {
   fr.addEventListener("load", () => {
     const imageUrl = fr.result;
 
+    let like = 1;
+
     let blogContents = {
       Title: titles,
       subTitles: subTitles,
       subject: subject,
       image: imageUrl,
-      like: like,
       caption: caption,
       Intro: Intro,
+      like: like,
       Content: Content,
       id: lastId,
     };
@@ -80,7 +82,7 @@ newBlogBtn.addEventListener("click", () => {
 //FUNCTION TO BLOG CONTENT
 
 function showData() {
-  // Retrieve form data from local storage
+  // retrieve form data from local storage
   let formData = JSON.parse(localStorage.getItem("contents"));
 
   if (formData && formData.length > 0) {
@@ -102,7 +104,7 @@ function showData() {
                         <h3>${item.Title}</h3>
                         <p class="blog-descript">${item.Intro}</p>
                         <span class="blog-comment" >
-                            <i class="far fa-thumbs-up" id="like-icon"></i>
+                            <i class="far fa-thumbs-up" id="like-icon" class="likeIcon"></i>
                             <span style="font-size: 13px; font-weight: 500px;" id="like-holder">0</span>
                           <i class="far fa-comment" id="comment-icon"></i>
                          <button class="read-more" id="read-more">Read More</button>
@@ -157,7 +159,7 @@ function editBlog(id) {
 document.getElementById("blogPost").addEventListener("click", function () {
   // alert("it is update");
 
-  // Retrieve the ID of the blog being edited
+  // getting the ID of the blog being edited
   let editId = JSON.parse(localStorage.getItem("editId"));
   let formData = JSON.parse(localStorage.getItem("contents"));
 
@@ -195,6 +197,7 @@ document.getElementById("blogPost").addEventListener("click", function () {
     location.reload();
   }
 });
+
 let counter = 0;
 
 document.getElementById("like-icon").addEventListener("click", () => {
