@@ -44,9 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p class="blog-descript">${item.Intro}</p>
                 <span class="blog-comment">
 
-                            <i class="far fa-thumbs-up" id="like-icon" class="likeIcon"></i>
-
-                    <span style="font-size: 13px; font-weight: 500px;">0</span>
+               <i class="far fa-thumbs-up like-icon" onclick="counter(${item.id})"></i>
+            <span class="like-holder" id="like-holder-${item.id}">${item.like}</span>
                     <i class="fa-regular fa-comment-dots" id="commentIcon"></i>
                     <button class="read-more" id="read-more" onclick="fun(${item.id})">Read More</button>
                 </span>
@@ -75,3 +74,19 @@ function fun(id) {
 document.getElementById("likeIcon").addEventListener("click", () => {
   alert("it is working");
 });
+
+// Function to increase like on blog as someone clicks on like icon
+function counter(id) {
+  let formData = JSON.parse(localStorage.getItem("contents"));
+  let index = formData.findIndex((item) => item.id === id);
+
+  // Increment the like count of the specific blog
+  formData[index].like++;
+
+  // Update the local storage with the modified blog data
+  localStorage.setItem("contents", JSON.stringify(formData));
+
+  // Display the updated like count in the corresponding blog's holder
+  document.getElementById(`like-holder-${id}`).textContent =
+    formData[index].like;
+}

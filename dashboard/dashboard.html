@@ -149,7 +149,7 @@
 
                 container.innerHTML = `
                      
-                        <td>"${message.names}"</td>
+                        <td>${message.names}</td>
                         <td>${message.email}</td>
                         <td> ${message.message}</td>
                         <td class="action-column">
@@ -186,9 +186,9 @@
             document.getElementById("message-box").style.visibility = "visible";
 
 
-            document.getElementById("visitorName").textContent = Message.names;
-            document.getElementById("visitorEmail").textContent = Message.email;
-            document.getElementById("visitorMessage").textContent = Message.message;
+            document.getElementById("visitorName").innerHTML = Message.names;
+            document.getElementById("visitorEmail").innerHTML = Message.email;
+            document.getElementById("visitorMessage").innerHTML = Message.message;
 
         }
 
