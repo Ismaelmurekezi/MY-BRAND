@@ -67,13 +67,22 @@ function fun(id) {
   let cont = JSON.parse(localStorage.getItem("contents"));
   let selectedBlog = cont.find((item) => item.id === id);
 
-  // Redirect to blogdetail.html with query parameters
-  window.location.href = `blogdetails.html?id=${selectedBlog.id}&subject=${selectedBlog.subject}&title=${selectedBlog.Title}&intro=${selectedBlog.Intro}&content=${selectedBlog.Content}&subTitles=${selectedBlog.subTitles}`;
-}
+  // console.log(selectedBlog.image);
 
-document.getElementById("likeIcon").addEventListener("click", () => {
-  alert("it is working");
-});
+  // Redirect to blogdetail.html with query parameters
+  // window.location.href = `blogdetails.html?id=${selectedBlog.id}&subject=${selectedBlog.subject}&title=${selectedBlog.Title}&intro=${selectedBlog.Intro}&content=${selectedBlog.Content}&subTitles=${selectedBlog.subTitles}`;
+  window.location.href = `blogdetails.html?id=${encodeURIComponent(
+    selectedBlog.id
+  )}&subject=${encodeURIComponent(
+    selectedBlog.subject
+  )}&title=${encodeURIComponent(selectedBlog.Title)}&intro=${encodeURIComponent(
+    selectedBlog.Intro
+  )}&content=${encodeURIComponent(
+    selectedBlog.Content
+  )}&subTitles=${encodeURIComponent(
+    selectedBlog.subTitles
+  )}&caption=${encodeURIComponent(selectedBlog.caption)}`;
+}
 
 // Function to increase like on blog as someone clicks on like icon
 function counter(id) {
@@ -86,7 +95,6 @@ function counter(id) {
   // Update the local storage with the modified blog data
   localStorage.setItem("contents", JSON.stringify(formData));
 
-  // Display the updated like count in the corresponding blog's holder
   document.getElementById(`like-holder-${id}`).textContent =
     formData[index].like;
 }

@@ -18,6 +18,8 @@ let lastId = parseInt(localStorage.getItem("lastId")) || 1;
 postBlogBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
+  let commentsHolder = JSON.parse(localStorage.getItem("commentHolder")) || [];
+
   // Increment the last used ID
   lastId++;
 
@@ -38,6 +40,7 @@ postBlogBtn.addEventListener("click", (e) => {
 
     // Create blog object
     let blogContents = {
+      id: lastId,
       Title: titles,
       subTitles: subTitles,
       subject: subject,
@@ -46,7 +49,6 @@ postBlogBtn.addEventListener("click", (e) => {
       Intro: Intro,
       like: like,
       Content: Content,
-      id: lastId,
     };
 
     // Add blog object to container array
@@ -100,10 +102,12 @@ function showData() {
           <span class="blog-comment">
             <i class="far fa-thumbs-up like-icon" onclick="counter(${item.id})"></i>
             <span class="like-holder" id="like-holder-${item.id}">${item.like}</span>
-            <i class="far fa-comment" id="comment-icon"></i>
-            <button class="read-more" id="read-more">Read More</button>
+            <i class="far fa-comment" id="comment-icon"  onclick="showCommentForm(${item.id})"></i>
+           
+            <button class="read-more" id="read-more" onclick="fun(${item.id})">Read More</button>
           </span>
         </div>`;
+
       containers.appendChild(container);
     });
   }
@@ -116,6 +120,17 @@ function deleteBlog(id) {
   let formData = JSON.parse(localStorage.getItem("contents"));
   formData = formData.filter((item) => item.id !== id);
   localStorage.setItem("contents", JSON.stringify(formData));
+
+  let commentsHolder = JSON.parse(localStorage.getItem("commentHolder")) || [];
+
+  // Convert postId to number for comparison
+  const postId = parseInt(id);
+
+  commentsHolder = commentsHolder.filter(
+    (comment) => parseInt(comment.postId) !== postId
+  );
+  localStorage.setItem("commentHolder", JSON.stringify(commentsHolder));
+
   location.reload();
 }
 
@@ -175,10 +190,8 @@ function counter(id) {
   // Increment the like count of the specific blog
   formData[index].like++;
 
-  // Update the local storage with the modified blog data
   localStorage.setItem("contents", JSON.stringify(formData));
 
-  // Display the updated like count in the corresponding blog's holder
   document.getElementById(`like-holder-${id}`).textContent =
     formData[index].like;
 }

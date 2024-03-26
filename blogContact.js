@@ -3,6 +3,10 @@ const emailError = document.getElementById("email-error");
 const messageError = document.getElementById("message-error");
 let submitError = document.getElementById("submit-error");
 
+let names = document.getElementById("username");
+let email = document.getElementById("email");
+let message = document.getElementById("contact-message");
+
 function validateName1() {
   let name = document.getElementById("username").value;
 
@@ -75,14 +79,14 @@ function validateForm(e) {
 
 //CODE TO RUN THE POP UP MESSAGE
 
-document.getElementById("submit-btn").addEventListener("click", (e) => {
-  e.preventDefault();
+// document.getElementById("submit-btn").addEventListener("click", (e) => {
+//   e.preventDefault();
 
-  document.getElementById("popup").style.visibility = "visible";
-  setTimeout(() => {
-    document.getElementById("popup").style.visibility = "hidden";
-  }, 3000);
-});
+//   document.getElementById("popup").style.visibility = "visible";
+//   setTimeout(() => {
+//     document.getElementById("popup").style.visibility = "hidden";
+//   }, 3000);
+// });
 
 // // Retrieve query parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -91,9 +95,8 @@ const subject = urlParams.get("subject");
 const title = urlParams.get("title");
 const intro = urlParams.get("intro");
 const content = urlParams.get("content");
-// const caption = urlParams.get("caption");
-// const subTitles = urlParams.get("subTitles");
-// const image = urlParams.get("image");
+const caption = urlParams.get("caption");
+const subTitles = urlParams.get("subTitles");
 
 // Populate blog detail content
 document.querySelector(".more-detail-blog").innerHTML = `
@@ -104,7 +107,74 @@ document.querySelector(".more-detail-blog").innerHTML = `
 
                     <p class="blog-title">${intro}</p>
                     <article class="article">${content}</article>
-                </div>
-              
+                   <figure class="blog-image-container">
+                  
+                    <figcaption><i>${caption}</i></figcaption>
+                </figure>
 
     `;
+
+let commentsHolder = [];
+
+document.getElementById("submit-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let name = names.value;
+  let emails = email.value;
+  let messages = message.value;
+
+  // Retrieve the blog post ID associated with the comment
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get("id");
+
+  let comment = {
+    postId: postId,
+    names: name,
+    email: emails,
+    message: messages,
+  };
+  // Store the comment along with the blog post ID in local storage
+  let commentsHolder = JSON.parse(localStorage.getItem("commentHolder")) || [];
+  commentsHolder.push(comment);
+  localStorage.setItem("commentHolder", JSON.stringify(commentsHolder));
+
+  names.value = "";
+  email.value = "";
+  message.value = "";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Retrieve the current blog post ID from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get("id");
+
+  let comments = JSON.parse(localStorage.getItem("commentHolder"));
+
+  let commentsContainer = document.querySelector(".comments-container");
+
+  commentsContainer.innerHTML = "";
+
+  if (comments && comments.length > 0) {
+    let postComments = comments.filter((comment) => comment.postId === postId);
+
+    if (postComments.length > 0) {
+      postComments.forEach((comment) => {
+        let commentElement = document.createElement("div");
+        commentElement.classList.add("comment");
+        commentElement.innerHTML = `
+         <div class="single-comment">
+          <p class="comment-user"> ${comment.email}</p>
+          <p class="comment-message">${comment.message}</p>
+          <div>
+        `;
+        commentsContainer.appendChild(commentElement);
+      });
+    } else {
+      // If there are no comments  display a message
+      commentsContainer.innerHTML = "<p>No comments yet for this post.</p>";
+    }
+  } else {
+    // If there are no comments at all, display a message
+    commentsContainer.innerHTML = "<p>No comments yet.</p>";
+  }
+});
