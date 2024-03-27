@@ -88,7 +88,7 @@ function validateForm(e) {
 //   }, 3000);
 // });
 
-// // Retrieve query parameters
+ // Retrieve query parameters
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 const subject = urlParams.get("subject");
@@ -97,6 +97,7 @@ const intro = urlParams.get("intro");
 const content = urlParams.get("content");
 const caption = urlParams.get("caption");
 const subTitles = urlParams.get("subTitles");
+const image = urlParams.get("image");
 
 // Populate blog detail content
 document.querySelector(".more-detail-blog").innerHTML = `
@@ -108,7 +109,7 @@ document.querySelector(".more-detail-blog").innerHTML = `
                     <p class="blog-title">${intro}</p>
                     <article class="article">${content}</article>
                    <figure class="blog-image-container">
-                  
+                    <img src="${image}" alt="wireframe-image" class="blog-image1">
                     <figcaption><i>${caption}</i></figcaption>
                 </figure>
 

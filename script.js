@@ -81,7 +81,9 @@ function fun(id) {
     selectedBlog.Content
   )}&subTitles=${encodeURIComponent(
     selectedBlog.subTitles
-  )}&caption=${encodeURIComponent(selectedBlog.caption)}`;
+  )}&caption=${encodeURIComponent(
+    selectedBlog.caption
+  )}&image=${encodeURIComponent(selectedBlog.image)}`;
 }
 
 // Function to increase like on blog as someone clicks on like icon

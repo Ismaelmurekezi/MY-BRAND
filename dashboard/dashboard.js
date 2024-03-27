@@ -13,6 +13,9 @@ let likeHolders = document.querySelectorAll(".like-holder");
 // Initialize container array for blog data or retrieve from local storage
 let container = JSON.parse(localStorage.getItem("contents")) || [];
 let lastId = parseInt(localStorage.getItem("lastId")) || 1;
+var cl = new cloudinary.Cloudinary({ cloud_name: "dp2bnr5yi", secure: true });
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dp2bnr5yi/upload";
+const CLOUDINARY_UPLOAD_PRESET = "mureisma";
 
 // Event listener for posting a new blog
 postBlogBtn.addEventListener("click", (e) => {
@@ -30,50 +33,86 @@ postBlogBtn.addEventListener("click", (e) => {
   let Intro = blogIntro.value;
   let Content = blogContent.value;
 
-  // Read image file and store to local storage
-  const fr = new FileReader();
-  fr.readAsDataURL(blogImage.files[0]);
-  fr.addEventListener("load", () => {
-    const imageUrl = fr.result;
+  // Call the function to handle file upload when the postBlogBtn is clicked
+  uploadImage();
 
-    let like = 0;
-
-    // Create blog object
-    let blogContents = {
-      id: lastId,
-      Title: titles,
-      subTitles: subTitles,
-      subject: subject,
-      image: imageUrl,
-      caption: caption,
-      Intro: Intro,
-      like: like,
-      Content: Content,
-    };
-
-    // Add blog object to container array
-    container.push(blogContents);
-
-    // Update data in local storage
-    localStorage.setItem("contents", JSON.stringify(container));
-    // Update last ID
-    localStorage.setItem("lastId", lastId);
-
-    // Reset form fields
-    blogTitle.value = "";
-    subTitle.value = "";
-    mainConcept.value = "";
-    blogImage.value = "";
-    imageCaption.value = "";
-    blogIntro.value = "";
-    blogContent.value = "";
-
-    blogForm.style.visibility = "hidden";
-
-    // Refresh the displayed blogs
-    showData();
-  });
+  function uploadImage() {
+    const file = blogImage.files[0];
+    uploadFile(file);
+  }
 });
+
+// Event listener for file change on the blog image input
+blogImage.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  uploadFile(file);
+});
+
+function uploadFile(file) {
+  let formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+
+  fetch(CLOUDINARY_URL, {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      console.log(response)
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      const imageUrl = data.secure_url;
+      let like = 0;
+
+      // Create blog object
+      let blogContents = {
+        id: lastId,
+        Title: titles,
+        subTitles: subTitles,
+        subject: subject,
+        image: imageUrl,
+        caption: caption,
+        Intro: Intro,
+        like: like,
+        Content: Content,
+      };
+      console.log(blogContents);
+
+      // Add blog object to container array
+      container.push(blogContents);
+
+      // Update data in local storage
+      localStorage.setItem("contents", JSON.stringify(container));
+      // Update last ID
+      localStorage.setItem("lastId", lastId);
+
+      // Reset form fields
+      blogTitle.value = "";
+      subTitle.value = "";
+      mainConcept.value = "";
+      blogImage.value = "";
+      imageCaption.value = "";
+      blogIntro.value = "";
+      blogContent.value = "";
+
+      blogForm.style.visibility = "hidden";
+
+      // Refresh the displayed blogs
+      showData();
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
+}
+
+
+// });
 
 // Event listener for showing new blog form
 newBlogBtn.addEventListener("click", () => {
@@ -195,3 +234,5 @@ function counter(id) {
   document.getElementById(`like-holder-${id}`).textContent =
     formData[index].like;
 }
+
+//CLOUDINARY
