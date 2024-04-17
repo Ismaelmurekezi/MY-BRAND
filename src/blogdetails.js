@@ -101,7 +101,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   if (response.ok) {
     const blogData = await response.json();
 
-    // Extract data from blogData object
     const {
       subject,
       title,
@@ -115,7 +114,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     console.log(comments);
     comments.forEach;
 
-    // Populate blog detail content
     document.querySelector(".more-detail-blog").innerHTML = `
             <p>${subject}</p>
             <h2>${title}</h2>
@@ -215,94 +213,3 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
   document.getElementById("email").value = "";
   document.getElementById("contact-message").value = "";
 });
-
-// // Retrieve query parameters
-// const urlParams = new URLSearchParams(window.location.search);
-// const id = urlParams.get("id");
-// const subject = urlParams.get("subject");
-// const title = urlParams.get("title");
-// const intro = urlParams.get("intro");
-// const content = urlParams.get("content");
-// const caption = urlParams.get("caption");
-// const subTitles = urlParams.get("subTitles");
-
-// // Populate blog detail content
-// document.querySelector(".more-detail-blog").innerHTML = `
-//             <p>${subject}</p>
-//             <h2>${title}</h2>
-//             <p class="blog-titles" id="header2">${subTitles}</p>
-//             <article class="article"> ${intro}</article>
-
-//                     <p class="blog-title">${intro}</p>
-//                     <article class="article">${content}</article>
-//                    <figure class="blog-image-container">
-//                    <img src="./images/wireframe.png" alt="wireframe-image" class="blog-image1">
-//                     <figcaption><i>${caption}</i></figcaption>
-//                 </figure>
-
-//     `;
-
-// let commentsHolder = [];
-
-// document.getElementById("submit-btn").addEventListener("click", (e) => {
-//   e.preventDefault();
-
-//   let name = names.value;
-//   let emails = email.value;
-//   let messages = message.value;
-
-//   // Retrieve the blog post ID associated with the comment
-//   const urlParams = new URLSearchParams(window.location.search);
-//   const postId = urlParams.get("id");
-
-//   let comment = {
-//     postId: postId,
-//     names: name,
-//     email: emails,
-//     message: messages,
-//   };
-//   // Store the comment along with the blog post ID in local storage
-//   let commentsHolder = JSON.parse(localStorage.getItem("commentHolder")) || [];
-//   commentsHolder.push(comment);
-//   localStorage.setItem("commentHolder", JSON.stringify(commentsHolder));
-
-//   names.value = "";
-//   email.value = "";
-//   message.value = "";
-// });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   // Retrieve the current blog post ID from the URL
-//   const urlParams = new URLSearchParams(window.location.search);
-//   const postId = urlParams.get("id");
-
-//   let comments = JSON.parse(localStorage.getItem("commentHolder"));
-
-//   let commentsContainer = document.querySelector(".comments-container");
-
-//   commentsContainer.innerHTML = "";
-
-//   if (comments && comments.length > 0) {
-//     let postComments = comments.filter((comment) => comment.postId === postId);
-
-//     if (postComments.length > 0) {
-//       postComments.forEach((comment) => {
-//         let commentElement = document.createElement("div");
-//         commentElement.classList.add("comment");
-//         commentElement.innerHTML = `
-//          <div class="single-comment">
-//           <p class="comment-user"> ${comment.email}</p>
-//           <p class="comment-message">${comment.message}</p>
-//           <div>
-//         `;
-//         commentsContainer.appendChild(commentElement);
-//       });
-//     } else {
-//       // If there are no comments  display a message
-//       commentsContainer.innerHTML = "<p>No comments yet for this post.</p>";
-//     }
-//   } else {
-//     // If there are no comments at all, display a message
-//     commentsContainer.innerHTML = "<p>No comments yet.</p>";
-//   }
-// });

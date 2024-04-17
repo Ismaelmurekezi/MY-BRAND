@@ -62,33 +62,3 @@ function successMessage(input) {
   const formControl = input.parentElement;
   formControl.className = "form-control success";
 }
-
-// function validateName() {
-//   const usernameValue = username.value.trim();
-
-//   if (usernameValue === "") {
-//     errorMessage(username, "username is required field");
-//     return false;
-//   } else if (!usernameValue.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
-//     errorMessage(username, "Write full name");
-//     return false;
-//   } else {
-//     successMessage(username);
-//     return true;
-//   }
-// }
-
-// function validatePassword() {
-//   const passwordValue = password.value.trim();
-
-//   if (passwordValue === "") {
-//     errorMessage(password, "Password is required field");
-//     return false;
-//   } else if (passwordValue.length < 8) {
-//     errorMessage(password, "Password cannot less than 8");
-//     return false;
-//   } else {
-//     successMessage(password);
-//     return true;
-//   }
-// }
