@@ -212,4 +212,5 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
   document.getElementById("username").value = "";
   document.getElementById("email").value = "";
   document.getElementById("contact-message").value = "";
+  location.reload();
 });
