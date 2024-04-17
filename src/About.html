@@ -20,9 +20,9 @@
         <header class="header">
             <figure>
 
-                <img src="./images/brand-removebg-preview.png" alt="Logo image" class="brand">
+                <img src="../assets/brand-removebg-preview.png" alt="Logo image" class="brand">
             </figure>
-            <img src="./images/burger-menu.png" alt="hamburger-menu" class="hamburger-menu" id="hamburgerMenu">
+            <img src="../assets/burger-menu.png" alt="hamburger-menu" class="hamburger-menu" id="hamburgerMenu">
             <ul class="nav-links" id="navLinks">
                 <li><a href="./index.html" class="links">Home</a></li>
                 <li><a href="./About.html" class="links">About</a></li>
@@ -33,48 +33,45 @@
             </ul>
             <button class="login-btn"><a href="./login.html">Sign In</a></button>
         </header>
-        <main class="contact-content">
-
-            <form action="">
-                <label for="" class="contact-form-title">YOU CAN REACH OUT TO ME</label> <br>
-                <div class="input-group">
-                    <input type="text" name="name" class="input-boxes" placeholder="Enter your name" id="contact-name"
-                        onkeyup="validateName()"><br>
-                    <small id="name-error"></small>
-                </div>
-                <div class="input-group">
-                    <input type="email" name="email" class="input-boxes" placeholder="Enter your email"
-                        id="contact-email" onkeyup="validateEmail()"><br>
-                    <small id="email-error"></small>
-                </div>
-                <div class="input-group">
-                    <textarea name="message" class="text-area" cols="30" rows="10" placeholder="Your message"
-                        id="contact-message" onkeyup="validateMessage()"></textarea><br>
-                    <small id="message-error"></small>
-                </div>
-                <button id="submit-btn" value="submit">Submit</button>
-                <span id="submit-error"></span>
-            </form>
 
 
-
-            <div class="vertical-line"></div>
-
-            <div class="contact-info">
-                <span class="contact-me">
-                    <img src="./images/location.png" alt="location">
-                    <p><span>My Location </span>KN 173 st 24</p>
-                </span>
-                <span class="contact-me">
-                    <img src="./images/call-icon.png" alt="contact" id="call-icon">
-                    <p><span>Phone</span> +250 781530573</p>
-                </span>
-                <span class="contact-me">
-                    <img src="./images/email-icon.png" alt="email">
-                    <p><span>Email</span> ismaelmurekezi1@gmail.com</p>
+        <main class="about-content">
+            <div class="about-me">
+                <img src="../assets/profile.png" alt="my-image" class="profile-image" id="about-profile">
+                <div class="about-intro">
+                    <h1>About Me</h1>
+                    <p class="about-descript">I'm Ismael, <span>Software Developer</span> with a passion for crafting
+                        engaging digital experiences
+                        through intuitive UX/UI design. Eager to leverage my skills in HTML, CSS, JavaScript, to
+                        contribute to innovative projects in the dynamic world of web development.
                     </p>
+                    <a href="./contact.html"><button class="contact-btn">CONTACT ME</button></a>
+                </div>
 
             </div>
+
+
+            <div class="about-skill-boxes">
+                <div class="about-skill-box1">
+                    <h2>UX/UI Design</h2>
+                    <p>UX/UI designer dedicated to creating meaningful digital experiences. With
+                        a background in software Engineering, I combine creativity, empathy, and
+                        problem-solving to craft seamless user-centric designs.</p>
+                    <p class="skills-options"><span>Tools </span>:&nbsp &nbsp Figma &nbsp &nbsp Adobe XD</p>
+                </div>
+                <div class="about-skill-box2">
+                    <h2>Software Developer</h2>
+                    <p>a passion for crafting engaging digital experiences through intuitive UX/UI
+                        design. Eager to leverage my skills in HTML, CSS, JavaScript, to contribute to
+                        innovative projects in the dynamic world of web development.</p>
+                    <p class="skills-options"><span>Tools</span>:&nbsp &nbsp HTML &nbsp &nbsp CSS &nbsp &nbsp JavaScript
+                    </p>
+                </div>
+                <div class="vertical-line" id="about-line"></div>
+            </div>
+
+
+
         </main>
 
 
@@ -84,7 +81,7 @@
             <div class="footer">
 
 
-                <img src="./images/real-brand.png" alt="my-logo" id="brand-footer">
+                <img src="../assets/real-brand.png" alt="my-logo" id="brand-footer">
 
 
 
@@ -106,7 +103,7 @@
 
                 <div>
                     <p class="footer-title">My platforms</p>
-                    <span class="social-media-links">
+                    <span class="social-media-links" id="footer-links">
 
                         <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                         <i class="fa fa-github"></i>
@@ -119,7 +116,12 @@
             <p class="copyright">copyright &copy; Ismael 2024.All rights reserved.</p>
         </footer>
     </div>
-    <script src="./contactform.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
+
+</div>
 </body>
 
 </html>

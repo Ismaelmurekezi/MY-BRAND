@@ -14,22 +14,22 @@
 <body>
     <div class="dashboard-container">
         <div class="sidebar">
-            <a href="../index.html"><img src="../images/real-brand.png" alt="my-logo" class="my-logo"></a>
+            <a href="../index.html"><img src="/assets/Brand-footer.png" alt="my-logo" class="my-logo"></a>
             <div class="sidebar-lists">
                 <span class="sidebar-labels-container">
-                    <img src="../images/MyProfile.jpg" alt="user-profile" class="dash-icon" id="profile-image">
+                    <img src="/assets/MyProfile.jpg" alt="user-profile" class="dash-icon" id="profile-image">
                     <a href="./profilepage.html"><span class="sidebar-labels">M.Ismael</span></a>
                 </span>
                 <span class="sidebar-labels-container">
-                    <img src="../images/dashboard.png" alt="dashboard icon" class="dash-icon">
+                    <img src="/assets/dashboard.png" alt="dashboard icon" class="dash-icon">
                     <a href="" class="sidebar-labels"><span>Dashboard</span></a>
                 </span>
                 <span class="sidebar-labels-container">
-                    <img src="../images/blog.png" alt="blog icon" class="dash-icon">
+                    <img src="/assets/blog.png" alt="blog icon" class="dash-icon">
                     <a href="./blogdashboard.html" class="sidebar-labels"><span>Blog</span></a>
                 </span>
                 <span class="sidebar-labels-container">
-                    <img src="../images/logout.png" alt="logout-icon" class="dash-icon">
+                    <img src="/assets/logout.png" alt="logout-icon" class="dash-icon">
                     <a href="../index.html"><span class="sidebar-labels">Logout</span></a>
 
                 </span>
@@ -45,7 +45,7 @@
                     <span class="dash-card">
                         <h3>TOTAL FEEDBACK</h3>
                         <span class="box-card">
-                            <img src="../images/icons8-blog-50.png" alt="blog-icon" class="dash-icon">
+                            <img src="/assets/icons8-blog-50.png" alt="blog-icon" class="dash-icon">
                             <p>34</p>
                         </span>
                     </span>
@@ -54,7 +54,7 @@
                     <span class="dash-card">
                         <h3>MONTHLY FEEDBACK</h3>
                         <span class="box-card">
-                            <img src="../images/icons8-blog-50.png" alt="blog-icon" class="dash-icon">
+                            <img src="/assets/icons8-blog-50.png" alt="blog-icon" class="dash-icon">
                             <p>34</p>
                         </span>
                     </span>
@@ -63,28 +63,28 @@
                 <div class="recent-messages-card">
                     <span class="recent-messages-title">Recent Messages</span>
                     <span class="recent-messages-row">
-                        <img src="../images/icons8-user-48.png" alt="users" class="dash-icon">
+                        <img src="/assets/icons8-user-48.png" alt="users" class="dash-icon">
                         <span class="recent-msg"><span class="person-name">Marcel ISHIMWE</span> has applied
                             social media expert position
                             <p class="time">1 minute ago</p>
                         </span>
                     </span>
                     <span class="recent-messages-row">
-                        <img src="../images/icons8-user-48.png" alt="users" class="dash-icon">
+                        <img src="/assets/icons8-user-48.png" alt="users" class="dash-icon">
                         <span class="recent-msg"><span class="person-name">Marcel ISHIMWE</span> has applied
                             social media expert position
                             <p class="time">1 minute ago</p>
                         </span>
                     </span>
                     <span class="recent-messages-row">
-                        <img src="../images/icons8-user-48.png" alt="users" class="dash-icon">
+                        <img src="/assets/icons8-user-48.png" alt="users" class="dash-icon">
                         <span class="recent-msg"><span class="person-name">Marcel ISHIMWE</span> has applied
                             social media expert position
                             <p class="time">1 minute ago</p>
                         </span>
                     </span>
                     <span class="recent-messages-row">
-                        <img src="../images/icons8-user-48.png" alt="users" class="dash-icon">
+                        <img src="/assets/icons8-user-48.png" alt="users" class="dash-icon">
                         <span class="recent-msg"><span class="person-name">Marcel ISHIMWE</span> has applied
                             social media expert position
                             <p class="time">1 minute ago</p>
@@ -137,65 +137,67 @@
     <script>
         //Displaying message feedback in table
 
-        document.addEventListener("DOMContentLoaded", () => {
-            let Messages = JSON.parse(localStorage.getItem("comments"));
-            // console.log(Messages)
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     let Messages = JSON.parse(localStorage.getItem("comments"));
+        //     // console.log(Messages)
 
-            let table = document.querySelector(".feedbackTable");
+        //     let table = document.querySelector(".feedbackTable");
 
-            Messages.forEach(message => {
-                let container = document.createElement("tr");
-                container.classList.add("data-row");
+        //     Messages.forEach(message => {
+        //         let container = document.createElement("tr");
+        //         container.classList.add("data-row");
 
-                container.innerHTML = `
+        //         container.innerHTML = `
                      
-                        <td>${message.names}</td>
-                        <td>${message.email}</td>
-                        <td> ${message.message}</td>
-                        <td class="action-column">
-                            <span style="color: #36C0C9; font-weight: 600;cursor:pointer" onclick="showMessages(${message.lastMessageId})">View</span>
-                            <span style="color: #fe0000;font-weight:600; cursor:pointer" id="delete-feeback" onclick="deleteFeedback(${message.lastMessageId})">Delete</span>
-                        </td>
+        //                 <td>${message.names}</td>
+        //                 <td>${message.email}</td>
+        //                 <td class="descript"> ${message.message}</td>
+        //                 <td>
+        //                     <div class="action-column">
+        //                     <span style="color: #36C0C9; font-weight: 600;cursor:pointer" onclick="showMessages(${message.lastMessageId})">View</span>
+        //                     <span style="color: #fe0000;font-weight:600; cursor:pointer" id="delete-feeback" onclick="deleteFeedback(${message.lastMessageId})">Delete</span>
+        //                     </div>
+        //                 </td>
 
-                `
-                table.appendChild(container);
-            })
-
-
-        });
-
+        //         `
+        //         table.appendChild(container);
+        //     })
 
 
-        function deleteFeedback(id) {
-            let Messages = JSON.parse(localStorage.getItem("comments"));
-
-            Messages = Messages.filter(message => message.lastMessageId !== id);
-
-            // Update localStorage with the filtered array
-            localStorage.setItem("comments", JSON.stringify(Messages));
-            location.reload();
-        }
-
-        //Function to display visitor message card based on id
-
-        function showMessages(id) {
-            let Messages = JSON.parse(localStorage.getItem("comments"));
-
-            Message = Messages.find((message) => message.lastMessageId === id);
-
-            document.getElementById("message-box").style.visibility = "visible";
+        // });
 
 
-            document.getElementById("visitorName").innerHTML = Message.names;
-            document.getElementById("visitorEmail").innerHTML = Message.email;
-            document.getElementById("visitorMessage").innerHTML = Message.message;
 
-        }
+        // function deleteFeedback(id) {
+        //     let Messages = JSON.parse(localStorage.getItem("comments"));
+
+        //     Messages = Messages.filter(message => message.lastMessageId !== id);
+
+        //     // Update localStorage with the filtered array
+        //     localStorage.setItem("comments", JSON.stringify(Messages));
+        //     location.reload();
+        // }
+
+        // //Function to display visitor message card based on id
+
+        // function showMessages(id) {
+        //     let Messages = JSON.parse(localStorage.getItem("comments"));
+
+        //     Message = Messages.find((message) => message.lastMessageId === id);
+
+        //     document.getElementById("message-box").style.visibility = "visible";
 
 
-        document.getElementById("dismiss-btn").addEventListener("click", () => {
-            document.getElementById("message-box").style.visibility = "hidden"
-        })
+        //     document.getElementById("visitorName").innerHTML = Message.names;
+        //     document.getElementById("visitorEmail").innerHTML = Message.email;
+        //     document.getElementById("visitorMessage").innerHTML = Message.message;
+
+        // }
+
+
+        // document.getElementById("dismiss-btn").addEventListener("click", () => {
+        //     document.getElementById("message-box").style.visibility = "hidden"
+        // })
 
     </script>
 </body>

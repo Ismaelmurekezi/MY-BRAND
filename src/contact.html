@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
+
+
+    <link rel="stylesheet" href="./styles.css">
+    <title>My portofolio</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <figure>
+
+                <img src="../assets/brand-removebg-preview.png" alt="Logo image" class="brand">
+            </figure>
+            <img src="../assets/burger-menu.png" alt="hamburger-menu" class="hamburger-menu" id="hamburgerMenu">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./index.html" class="links">Home</a></li>
+                <li><a href="./About.html" class="links">About</a></li>
+                <li><a href="./blog.html" class="links">Blog</a></li>
+                <li><a href="./portfolio.html" class="links">My work</a></li>
+                <li><a href="./skills.html" class="links">Skills</a></li>
+                <li><a href="./contact.html" class="links">Contact</a></li>
+            </ul>
+            <button class="login-btn"><a href="./login.html">Sign In</a></button>
+        </header>
+        <main class="contact-content">
+
+            <form action="">
+                <label for="" class="contact-form-title">YOU CAN REACH OUT TO ME</label> <br>
+                <div class="input-group">
+                    <input type="text" name="name" class="input-boxes" placeholder="Enter your name" id="contact-name"
+                        onkeyup="validateName()"><br>
+                    <small id="name-error"></small>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" class="input-boxes" placeholder="Enter your email"
+                        id="contact-email" onkeyup="validateEmail()"><br>
+                    <small id="email-error"></small>
+                </div>
+                <div class="input-group">
+                    <textarea name="message" class="text-area" cols="30" rows="10" placeholder="Your message"
+                        id="contact-message" onkeyup="validateMessage()"></textarea><br>
+                    <small id="message-error"></small>
+                </div>
+                <button id="submit-btn" value="submit">Submit</button>
+                <span id="submit-error"></span>
+            </form>
+
+
+
+            <div class="vertical-line"></div>
+
+            <div class="contact-info">
+                <span class="contact-me">
+                    <img src="../assets/location.png" alt="location">
+                    <p><span>My Location </span>KN 173 st 24</p>
+                </span>
+                <span class="contact-me">
+                    <img src="../assets/call-icon.png" alt="contact" id="call-icon">
+                    <p><span>Phone</span> +250 781530573</p>
+                </span>
+                <span class="contact-me">
+                    <img src="../assets/email-icon.png" alt="email">
+                    <p><span>Email</span> ismaelmurekezi1@gmail.com</p>
+                    </p>
+
+            </div>
+        </main>
+
+
+
+        <footer class="main-footer">
+
+            <div class="footer">
+
+
+                <img src="../assets/real-brand.png" alt="my-logo" id="brand-footer">
+
+
+
+                <div class="quick-links">
+                    <p class="footer-title">Quick-links</p>
+                    <a href="./portfolio.html">
+                        <p>My work</p>
+                    </a>
+                    <a href="./About.html">
+                        <p>About me</p>
+                    </a>
+                    <a href="./index.html">
+                        <p>Home</p>
+                    </a>
+                    <a href="./contact.html">
+                        <p>Contact</p>
+                    </a>
+                </div>
+
+                <div>
+                    <p class="footer-title">My platforms</p>
+                    <span class="social-media-links">
+
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                        <i class="fa fa-github"></i>
+                        <i class="fa fa-twitter"></i>
+
+                    </span>
+                </div>
+            </div>
+
+            <p class="copyright">copyright &copy; Ismael 2024.All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="./contactform.js"></script>
+</body>
+
+</html>

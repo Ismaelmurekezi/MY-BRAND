@@ -148,12 +148,18 @@ th {
 .action-column {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .table-titles {
   color: #36c0c9;
   font-size: 14px;
   font-weight: 500;
+}
+
+.data-row .descript {
+  /* background-color: #36c0c9; */
+  width: 700px;
 }
 
 .person-name {
@@ -295,6 +301,10 @@ th {
   font-weight: 500;
   font-size: 14px;
   background-color: rgb(0, 0, 0, 0);
+}
+
+.liked {
+  color: blue;
 }
 
 /* DASHBOARD PROFILE PAGE */

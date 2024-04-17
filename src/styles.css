@@ -7,6 +7,10 @@ html {
   height: 100%;
 }
 
+.like-icon.liked {
+  color: blue; /* Change color to blue when liked */
+}
+
 body {
   background-color: #0b0a28;
   color: #fff;
@@ -421,6 +425,10 @@ p > span {
   padding-top: 0.5rem;
 }
 
+.help {
+  color: red;
+}
+
 /* PORTOFOLIO PAGE STYLES */
 .project-wrapper {
   display: flex;
@@ -571,6 +579,10 @@ h1 {
 .read-more:hover {
   background-color: #36c0c9;
   color: #fff;
+}
+
+.commented-time {
+  color: #36c0c9;
 }
 
 /* BLOG DETAIL PAGE */
