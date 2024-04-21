@@ -115,15 +115,17 @@ window.addEventListener("DOMContentLoaded", async () => {
     comments.forEach;
 
     document.querySelector(".more-detail-blog").innerHTML = `
-            <p>${subject}</p>
-            <h2>${title}</h2>
-            <p class="blog-titles" id="header2">${subtitle}</p>
-            <article class="article">${intro}</article>
-            <article class="article">${content}</article>
-            <figure class="blog-image-container">
-                <img src="${image}" alt="Blog Image" class="blog-image1">
-                <figcaption><i>${caption}</i></figcaption>
-            </figure>
+    <div class="blog-post-content">
+    <p>${subject}</p>
+    <h2>${title}</h2>
+    <p class="blog-titles" id="header2">${subtitle}</p>
+    <article class="article">${intro}</article>
+    <article class="article">${content}</article>
+    </div>
+    <figure class="blog-image-container">
+    <img src="${image}" alt="Blog Image" class="blog-image1">
+   <figcaption><i>${caption}</i></figcaption>
+    </figure>
         `;
 
     // Display comments

@@ -78,18 +78,21 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:5000/api/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          username: names,
-          email: emails,
-          message: messages,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:5000/api/messages/createMessage",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            username: names,
+            email: emails,
+            message: messages,
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

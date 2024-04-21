@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="blog-descript">${item.intro}</p>
                         <span class="blog-comment">
                                 <i class="far fa-thumbs-up like-icon" onclick="toggleLike('${item._id}', this)"></i>
-                             <span class="like-holder" id="like-holder-${item.id}">${item.likes}</span>
+                             <span class="like-holder" id="like-holder-${item._id}">${item.likes}</span>
                             <i class="fa-regular fa-comment-dots" id="commentIcon"></i>
                             <a href="./blogdetails.html?id=${item._id}"><button class="read-more" id="read-more">Read More</button></a>
                         </span>
@@ -64,13 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// FUNCTION FOR BLOG LIKE FUNCTIONALITY
+//Blog like functionality
 
 async function toggleLike(blogId, iconElement) {
   try {
     const token = localStorage.getItem("token");
 
-    //request to backend to like or unlike the blog
+    // Send request to backend to like or unlike the blog
     const response = await fetch(
       `http://localhost:5000/api/blog/${blogId}/like`,
       {
@@ -87,18 +87,49 @@ async function toggleLike(blogId, iconElement) {
 
     // Update like count in UI
     const likeHolder = document.getElementById(`like-holder-${blogId}`);
-    const likeCount = parseInt(likeHolder.textContent);
-    if (response.status === 200) {
-      // if Liked, increment like count and change icon color
+    let likeCount = parseInt(likeHolder.textContent);
+
+    // Check if the user has already liked the blog
+    if (iconElement.classList.contains("liked")) {
+      likeHolder.textContent = likeCount - 1;
+      iconElement.classList.remove("liked");
+    } else {
       likeHolder.textContent = likeCount + 1;
       iconElement.classList.add("liked");
-    } else if (response.status === 204) {
-      // if Unliked,like count decrement and change icon color
-      likeHolder.textContent = likeCount - 1;
-      // Remove class to revert color
-      iconElement.classList.remove("liked");
     }
   } catch (error) {
     console.error("Error toggling like:", error);
   }
 }
+
+function checkTokenExpiration() {
+  const token = localStorage.getItem("token");
+  const loggedUserString = localStorage.getItem("loggedUser");
+  const loggedUser = loggedUserString ? JSON.parse(loggedUserString) : null;
+
+  if (token && loggedUser) {
+    // Access the email property from the loggedUser object
+    let userEmail = loggedUser.email;
+    const username = userEmail.slice(0, userEmail.indexOf("@"));
+    document.getElementById("names").innerHTML = username;
+    // const email = loggedUser.email;
+    // document.getElementById("names").innerHTML = email;
+
+    const expirationTime = localStorage.getItem("tokenExpiration");
+    const currentTime = new Date().getTime();
+    document.getElementById("login").style.display = "none";
+    document.getElementById("names").style.display = "block";
+
+    if (expirationTime && currentTime > parseInt(expirationTime)) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("loggedUser");
+      localStorage.removeItem("tokenExpiration");
+      document.getElementById("names").style.display = "none";
+      document.getElementById("login").style.display = "block";
+
+      alert("Your session has expired. Please log in again.");
+    }
+  }
+}
+
+window.addEventListener("load", checkTokenExpiration);
