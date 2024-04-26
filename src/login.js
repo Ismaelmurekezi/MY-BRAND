@@ -18,13 +18,16 @@ form.addEventListener("submit", async (e) => {
     };
 
     // Send request for user authentication
-    const response = await fetch("http://localhost:5000/api/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://my-brand-backend-ibtm.onrender.com/api/user/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
     // Check if the request was successful
     if (response.ok) {
@@ -35,7 +38,7 @@ form.addEventListener("submit", async (e) => {
       alert("Log in successfully");
 
       // Check if the username is "mark" and redirect to the dashboard page
-      if (userData.email === "kamali@gmail.com") {
+      if (userData.email === "ismael@gmail.com") {
         window.location.href = "./dashboard/dashboard.html";
       } else {
         window.location.href = "/index.html";

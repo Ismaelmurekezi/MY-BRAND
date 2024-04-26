@@ -27,7 +27,7 @@ const fetchUserById = async (userId) => {
 const updateUserById = async (userId, userData) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/user/updateUserById/${userId}`,
+      `https://my-brand-backend-ibtm.onrender.com/api/user/updateUserById/${userId}`,
       {
         method: "PUT",
         headers: {
@@ -84,7 +84,6 @@ document.getElementById("update-btn").addEventListener("click", async () => {
 
     if (updatedUserData) {
       alert("User profile updated successfully");
-      // Optionally, you can redirect the user after successful update
       window.location.href = "/dashboard.html";
     }
   } catch (error) {

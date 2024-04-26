@@ -79,7 +79,7 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/messages/createMessage",
+        "https://my-brand-backend-ibtm.onrender.com/api/messages/createMessage",
         {
           method: "POST",
           headers: {

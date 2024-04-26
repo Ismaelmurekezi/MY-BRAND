@@ -1,7 +1,7 @@
 //FUNCTION TO DISPLAY MESSAGE IN THE TABLE
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:5000/api/user/getAllUsers", {
+  fetch("https://my-brand-backend-ibtm.onrender.com/api/user/getAllUsers", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const deleteUserById = async (id) => {
   try {
     // Sending a Delate request to backend API
     const response = await fetch(
-      `http://localhost:5000/api/user/deleteUser/${id}`,
+      `https://my-brand-backend-ibtm.onrender.com/api/user/deleteUser/${id}`,
       {
         method: "DELETE",
         // headers: {
@@ -71,7 +71,7 @@ const deleteUserById = async (id) => {
 const showUser = async (id) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/user/getUserById/${id}`,
+      `https://my-brand-backend-ibtm.onrender.com/api/user/getUserById/${id}`,
       {
         method: "GET",
         // headers: {
@@ -137,12 +137,15 @@ const logoutButton = document.getElementById("loggingout");
 
 logoutButton.addEventListener("click", async function () {
   try {
-    const response = await fetch("http://localhost:5000/api/user/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://my-brand-backend-ibtm.onrender.com/api/user/logout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (response.ok) {
       alert("logged out successful");
