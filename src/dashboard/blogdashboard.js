@@ -32,16 +32,13 @@ postBlogBtn.addEventListener("click", async (e) => {
 
       const token = localStorage.getItem("token");
       // Send form data to backend API
-      const response = await fetch(
-        "https://my-brand-backend-ibtm.onrender.com/api/blog/create",
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/blog/create", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.ok) {
         const newBlog = await response.json();
@@ -77,7 +74,7 @@ newBlogBtn.addEventListener("click", () => {
 
 // Function to display blog posts card in Admin dashboard
 function showData() {
-  fetch("https://my-brand-backend-ibtm.onrender.com/api/blog/getAllBlogs", {
+  fetch("http://localhost:5000/api/blog/getAllBlogs", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -134,7 +131,7 @@ async function deleteBlog(id) {
 
     // Sending a Delate request to backend API
     const response = await fetch(
-      `https://my-brand-backend-ibtm.onrender.com/api/blog/delete/${id}`,
+      `http://localhost:5000/api/blog/delete/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -166,7 +163,7 @@ async function editBlog(id) {
 
     // Retrieve the blog data from the backend API
     const response = await fetch(
-      `https://my-brand-backend-ibtm.onrender.com/api/blog/getBlogById/${id}`,
+      `http://localhost:5000/api/blog/getBlogById/${id}`,
       {
         method: "GET",
         headers: {
@@ -221,16 +218,13 @@ async function editBlog(id) {
         formData.append("image", imageFile);
       }
 
-      fetch(
-        `https://my-brand-backend-ibtm.onrender.com/api/blog/update/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      )
+      fetch(`http://localhost:5000/api/blog/update/${id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      })
         .then((response) => {
           if (!response.ok) {
             console.log("Failed to update blog", error);
@@ -257,7 +251,7 @@ async function handleLike(blogId) {
 
   try {
     const response = await fetch(
-      `https://my-brand-backend-ibtm.onrender.com/api/blog/${blogId}/like`,
+      `http://localhost:5000/api/blog/${blogId}/like`,
       {
         method: "POST",
         headers: {
@@ -328,9 +322,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const blogId = params.get("id");
 
   // Fetch full details of blog post from backend api
-  const response = await fetch(
-    `https://my-brand-backend-ibtm.onrender.com/${blogId}`
-  );
+  const response = await fetch(`http://localhost:5000/api/blog/${blogId}`);
   if (response.ok) {
     const blogData = await response.json();
 
@@ -421,7 +413,7 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
     const token = localStorage.getItem("token");
     // Send POST request to backend API to add comment
     const response = await fetch(
-      `https://my-brand-backend-ibtm.onrender.com/api/blog/${postId}/comment`,
+      `http://localhost:5000/api/blog/${postId}/comment`,
       {
         method: "POST",
         headers: {
@@ -456,15 +448,12 @@ const logoutButton = document.getElementById("logouts");
 
 logoutButton.addEventListener("click", async function () {
   try {
-    const response = await fetch(
-      "https://my-brand-backend-ibtm.onrender.com/api/user/logout",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch("http://localhost:5000/api/user/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (response.ok) {
       alert("logged out successful");

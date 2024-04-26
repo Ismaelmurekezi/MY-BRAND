@@ -96,7 +96,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   // Fetch full details of blog post from backend api
   const response = await fetch(
-    `https://my-brand-backend-ibtm.onrender.com/api/blog/getBlogById/${blogId}`
+    `http://localhost:5000/api/blog/getBlogById/${blogId}`
   );
   if (response.ok) {
     const blogData = await response.json();
@@ -190,7 +190,7 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
     const token = localStorage.getItem("token");
     // Send POST request to backend API to add comment
     const response = await fetch(
-      `https://my-brand-backend-ibtm.onrender.com/api/blog/${postId}/comment`,
+      `http://localhost:5000/api/blog/${postId}/comment`,
       {
         method: "POST",
         headers: {
