@@ -10,11 +10,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
 
-
-    <!-- <link rel="stylesheet" href="./styles .css"> -->
     <link rel="stylesheet" href="./src/styles.css">
     <title>My portofolio</title>
 </head>
+
 
 <body>
     <div class="container">
@@ -35,19 +34,24 @@
                 <button class="login-btn" id="login"><a href="./src/login.html">Sign In</a></button>
 
             </ul>
-            <li style="display: none;" id="names"></li>
-            <!-- <div class="userProfile">
-                <form action="">
-                    <select name="userprofile" id="userprofile">
-                        <option value="v"></option>
-                      
-                        <option value="logout">log</option>
-                    </select>
-                </form>
-            </div> -->
+            <!-- USER PROFILE DISPLAY -->
+
+            <div class="profile-display" id="profile">
+                <p id="names"></p>
+                <div class="dropdown-arrow" id="arrow">
+                    <i class="fa-solid fa-caret-down" id="dropdown-btn" onclick="toggleDropdown()"></i>
+                    <div id="dropdown-content" class="profile-links">
+                        <div><a href="#" id="logout">Logout</a></div>
+                        <!-- <div><a href="./src/userprofile.html" onclick="populateUserInfo()">Profile</a></div> -->
+                    </div>
+                </div>
+            </div>
 
 
         </header>
+        <div id="popup-msg">
+            <p>Logout successful</p>
+        </div>
 
         <main class="content">
             <div class="intro-section">
@@ -61,9 +65,6 @@
                 <div class="contact-section">
                     <p>Get in touch</p>
                     <div class="social-media-links">
-                        <!-- <i class="fa fa-linkedin-square" aria-hidden="true"id="icon"></i>
-                        <i class="fa fa-github"id="icon"></i>
-                        <i class="fa fa-twitter"id="icons"></i> -->
                         <a href="https://www.linkedin.com/in/murekezi-ismael/"><i class="fa fa-linkedin-square"
                                 aria-hidden="true"></i></a>
                         <a href="https://github.com/Ismaelmurekezi"><i class="fa fa-github"></i></a>
@@ -118,6 +119,7 @@
 
         </footer>
     </div>
+    <script src="https://kit.fontawesome.com/ffd0b0bd60.js" crossorigin="anonymous"></script>
     <script src="./src/script.js"></script>
 </body>
 

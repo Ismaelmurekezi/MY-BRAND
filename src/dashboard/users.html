@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="./dashboard.css">
+    <title>portfolio</title>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <a href="/index.html"><img src="/assets/Brand-footer.png" alt="my-logo" class="my-logo"></a>
+            <div class="sidebar-lists">
+                <span class="sidebar-labels-container">
+                    <img src="/assets/MyProfile.jpg" alt="user-profile" class="dash-icon" id="profile-image">
+                    <a href="./profilepage.html"><span class="sidebar-labels" id="admin">Ismael</span></a>
+                </span>
+                <span class="sidebar-labels-container">
+                    <img src="/assets/dashboard.png" alt="dashboard icon" class="dash-icon">
+                    <a href="./dashboard.html" class="sidebar-labels"><span>Dashboard</span></a>
+                </span>
+                <span class="sidebar-labels-container">
+                    <img src="/assets/blog.png" alt="blog icon" class="dash-icon">
+                    <a href="./blogdashboard.html" class="sidebar-labels"><span>Blogs</span></a>
+                </span>
+                <span class="sidebar-labels-container">
+                    <img src="/assets/user.png" alt="blog icon" class="dash-icon">
+                    <a href="./users.html" class="sidebar-labels" class=""><span>Users</span></a>
+                </span>
+                <span class="sidebar-labels-container">
+                    <img src="/assets/logout.png" alt="logout-icon" class="dash-icon">
+                    <a href="../index.html"><span class="sidebar-labels" id="loggingout">Logout</span></a>
+
+                </span>
+
+            </div>
+        </div>
+
+        <div class="dashboard-contents">
+            <div class="header">
+                <h2 id="dash-title">WELCOME TO DASHBOARD</h2>
+
+                <div class="cards-container">
+                    <span class="dash-card">
+                        <h3>TOTAL USERS</h3>
+                        <span class="box-card">
+                            <img src="/assets/user-white.png" alt="blog-icon" class="dash-icon">
+                            <p id="allUsers">
+                                <!-- displays number of users dynamically -->
+                            </p>
+                        </span>
+                    </span>
+                </div>
+                <div class="cards-container">
+                    <span class="dash-card">
+                        <h3>MONTHLY USERS</h3>
+                        <span class="box-card">
+                            <img src="/assets/user-white.png" alt="blog-icon" class="dash-icon">
+                            <p id="allUser">
+                                <!-- displays number of users dynamically -->
+                            </p>
+                        </span>
+                    </span>
+
+                </div>
+
+
+                <div id="message-box" class="user">
+                    <h3 id="message-title">User Information</h3>
+                    <div>
+                        <label for="">Names</label>
+                        <span id="visitorName"></span>
+                    </div>
+                    <div>
+                        <label for="">Email</label>
+                        <span id="visitorEmail"></span>
+                    </div>
+
+                    <button id="dismiss-btn">Dismiss</button>
+                </div>
+
+
+
+                <div class="tables-part" id="user-table">
+                    <h3>List of Users</h3>
+                    <table class="feedbackTable">
+                        <thead>
+                            <th class="table-titles">Names</th>
+                            <th class="table-titles">Emails</th>
+                            <th class="table-titles actions">Actions</th>
+                        </thead>
+
+
+                        <!-- THIS IS WHERE ADDED TABLE ROW DATA WILL BE DISPLAYED -->
+
+
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+        <script src="./users.js">
+
+
+        </script>
+</body>
+
+</html>

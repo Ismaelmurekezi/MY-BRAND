@@ -30,16 +30,21 @@ postBlogBtn.addEventListener("click", async (e) => {
       formData.append("content", blogContent.value);
       formData.append("image", blogImage.files[0]);
 
+      const token = localStorage.getItem("token");
       // Send form data to backend API
       const response = await fetch("http://localhost:5000/api/blog/create", {
         method: "POST",
         body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.ok) {
         const newBlog = await response.json();
         console.log(newBlog);
         alert("New blog created successfully");
+        location.reload();
 
         // Reset form fields
         blogTitle.value = "";
@@ -53,7 +58,6 @@ postBlogBtn.addEventListener("click", async (e) => {
         blogForm.style.visibility = "hidden";
 
         // Refresh the displayed blogs
-        location.reload();
       } else {
         console.error("Failed to create blog:", response.statusText);
       }
@@ -79,6 +83,11 @@ function showData() {
     .then((response) => response.json())
     .then((data) => {
       let containers = document.querySelector(".blog-container");
+      let blogs = data.length;
+      // console.log(blogs);
+
+      document.getElementById("allblogs").innerHTML = blogs;
+      document.getElementById("blogs").innerHTML = blogs;
 
       data.forEach((item) => {
         let container = document.createElement("div");
@@ -97,7 +106,7 @@ function showData() {
                               <i class="far fa-thumbs-up like-icon" id="like-icon-${item._id}" onclick="handleLike('${item._id}')"></i>
                               <span class="like-holder" id="like-holder-${item._id}">${item.likes}</span>
                             <i class="fa-regular fa-comment-dots" id="commentIcon"></i>
-                            <a href="../blogdetails.html?id=${item.id}"><button class="read-more" id="read-more">Read More</button></a>
+                            <a href="../blogdetails.html?id=${item._id}"><button class="read-more" id="read-more">Read More</button></a>
                         </span>
                     </div>
                 </div>
@@ -220,8 +229,7 @@ async function editBlog(id) {
           if (!response.ok) {
             console.log("Failed to update blog", error);
           }
-          // Blog success updated
-          console.log("Blog updated successfully");
+          alert("Blog updated successfully");
           location.reload();
         })
         .catch((error) => {
@@ -232,7 +240,6 @@ async function editBlog(id) {
     });
   } catch (error) {
     console.error("Error editing blog:", error);
-    // Handle error (e.g., display error message to user)
   }
 }
 
@@ -249,6 +256,7 @@ async function handleLike(blogId) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -266,3 +274,199 @@ async function handleLike(blogId) {
     console.error("Error liking/unliking blog:", error);
   }
 }
+
+//checking if token is expired and alert user
+
+function checkTokenExpiration() {
+  const token = localStorage.getItem("token");
+  const loggedUserString = localStorage.getItem("loggedUser");
+  const loggedUser = loggedUserString ? JSON.parse(loggedUserString) : null;
+
+  if (token && loggedUser) {
+    const expirationTime = localStorage.getItem("tokenExpiration");
+    const currentTime = new Date().getTime();
+    // console.log(loggedUser.message);
+
+    //Showing off the admin name
+    let userEmail = loggedUser.email;
+    const username = userEmail.slice(0, userEmail.indexOf("@"));
+    document.getElementById("admin").innerHTML = username;
+
+    if (expirationTime && currentTime > parseInt(expirationTime)) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("loggedUser");
+      localStorage.removeItem("tokenExpiration");
+
+      alert("Your session has expired. Please log in again.");
+    }
+  }
+}
+
+window.addEventListener("load", checkTokenExpiration);
+
+//CODE TO RUN THE POP UP MESSAGE
+
+document.getElementById("submit-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.getElementById("popup").style.visibility = "visible";
+  setTimeout(() => {
+    document.getElementById("popup").style.visibility = "hidden";
+  }, 3000);
+});
+
+//blogdetail content
+
+window.addEventListener("DOMContentLoaded", async () => {
+  // Extract blog ID from URL parameter
+  const params = new URLSearchParams(window.location.search);
+  const blogId = params.get("id");
+
+  // Fetch full details of blog post from backend api
+  const response = await fetch(
+    `http://localhost:5000/api/blog/getBlogById/${blogId}`
+  );
+  if (response.ok) {
+    const blogData = await response.json();
+
+    const {
+      subject,
+      title,
+      subtitle,
+      intro,
+      content,
+      caption,
+      image,
+      comments,
+    } = blogData;
+    console.log(comments);
+    comments.forEach;
+
+    document.querySelector(".more-detail-blog").innerHTML = `
+    <div class="blog-post-content">
+    <p>${subject}</p>
+    <h2>${title}</h2>
+    <p class="blog-titles" id="header2">${subtitle}</p>
+    <article class="article">${intro}</article>
+    <article class="article">${content}</article>
+    </div>
+    <figure class="blog-image-container">
+    <img src="${image}" alt="Blog Image" class="blog-image1">
+   <figcaption><i>${caption}</i></figcaption>
+    </figure>
+        `;
+
+    // Display comments
+    let commentsContainer = document.querySelector(".comments-container");
+    commentsContainer.innerHTML = "";
+
+    if (comments && comments.length > 0) {
+      comments.forEach((comment) => {
+        const createdAtDate = new Date(comment.createdAt);
+        const createdAtTime = createdAtDate.toLocaleTimeString();
+        const createdAtDateString = createdAtDate.toLocaleDateString();
+        let commentElement = document.createElement("div");
+        commentElement.classList.add("comment");
+        commentElement.innerHTML = `
+                    <div class="single-comment">
+                        <p class="comment-user">${comment.userEmail}</p>
+                        <p class="comment-message">${comment.text}</p>
+                        <p class="comment-message"><span class="commented-time" id="time" >Commented At:</span> ${createdAtTime}</p>
+                        <p class="comment-time"><span class="commented-time">Date:</span> ${createdAtDateString}</p>
+                    </div>
+                `;
+        commentsContainer.appendChild(commentElement);
+      });
+    } else {
+      commentsContainer.innerHTML = "<p>No comments yet for this post.</p>";
+    }
+  } else {
+    console.error("Failed to fetch blog data");
+  }
+});
+
+//Messaging form function
+
+document.getElementById("submit-btn").addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  try {
+    const name = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
+
+    // Validate input fields
+    if (!name || !email || !message) {
+      throw new Error("Please fill in all fields");
+    }
+
+    // Retrieve the blog post ID associated with the comment from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get("id");
+
+    // Create comment object
+    const commentData = {
+      postId: postId,
+      userEmail: email,
+      username: name,
+      text: message,
+    };
+
+    // console.log(commentData);
+    const token = localStorage.getItem("token");
+    // Send POST request to backend API to add comment
+    const response = await fetch(
+      `http://localhost:5000/api/blog/${postId}/comment`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(commentData),
+      }
+    );
+
+    if (response.ok) {
+      alert("Comment added successfully");
+    } else {
+      // Handle error response from backend
+      const errorData = await response.json();
+      console.log(errorData.message || "Failed to add comment");
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+    // Display error message to the user
+    document.getElementById("submit-error").textContent = error.message;
+  }
+  document.getElementById("username").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("contact-message").value = "";
+  location.reload();
+});
+
+//LOGGING USER OUT
+
+const logoutButton = document.getElementById("logouts");
+
+logoutButton.addEventListener("click", async function () {
+  try {
+    const response = await fetch("http://localhost:5000/api/user/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      alert("logged out successful");
+      localStorage.removeItem("token");
+      localStorage.removeItem("loggedUser");
+      localStorage.removeItem("tokenExpiration");
+      window.location.href = "/index.html";
+    } else {
+      console.error("Logout failed:", await response.text());
+    }
+  } catch (error) {
+    console.error("An error occurred during logout:", error);
+  }
+});

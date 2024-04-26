@@ -137,7 +137,7 @@ form.addEventListener("submit", async (e) => {
         console.log(data);
         alert("User registered successfully!");
 
-        window.location.href = "./index.html";
+        window.location.href = "./login.html";
       } else {
         const errorData = await response.json();
         console.error(errorData);

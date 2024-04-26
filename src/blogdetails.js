@@ -125,7 +125,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     <figure class="blog-image-container">
     <img src="${image}" alt="Blog Image" class="blog-image1">
    <figcaption><i>${caption}</i></figcaption>
+   
     </figure>
+    
         `;
 
     // Display comments

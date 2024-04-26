@@ -151,6 +151,7 @@ th {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 1rem;
 }
 
 .table-titles {
@@ -528,4 +529,48 @@ a {
 .actions {
   display: flex;
   gap: 2rem;
+}
+
+/* USER PAGE */
+#user-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 300px;
+}
+
+div #message-box {
+  margin-top: 90px;
+  margin-right: 350px;
+}
+@media screen and (max-width: 700px) {
+  .tables-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 600px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .tables-part {
+    margin-top: 200px;
+  }
+
+  .recent-messages-card {
+    position: relative;
+    top: 90px;
+    left: 3rem;
+    margin-bottom: 1rem;
+  }
+  div #message-box {
+    margin-top: 90px;
+    margin-right: 200px;
+  }
+  #user-table {
+    /* background-color: red; */
+    margin-top: 50px;
+  }
 }

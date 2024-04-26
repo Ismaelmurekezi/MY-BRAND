@@ -1,7 +1,7 @@
 //FUNCTION TO DISPLAY MESSAGE IN THE TABLE
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:5000/api/messages/getAllMessages", {
+  fetch("http://localhost:5000/api/user/getAllUsers", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -11,22 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       let containers = document.querySelector(".blog-container");
       let table = document.querySelector(".feedbackTable");
-      let messages = data.length;
-      // console.log(messages);
-      document.getElementById("allmessages").innerHTML = messages;
-      document.getElementById("allmessage").innerHTML = messages;
+      let allUsers = data.length;
+      document.getElementById("allUsers").innerHTML = allUsers;
+      document.getElementById("allUser").innerHTML = allUsers;
       data.forEach((item) => {
         let container = document.createElement("tr");
         container.classList.add("data-row");
+        // console.log(data);
         container.innerHTML = `
                          
-                      <td>${item.username}</td>
-                      <td>${item.email}</td>
-                      <td class="descript"><p id="row">${item.message}</p></td>
-                      <td>
+                      <td style="width:300px";>${item.username}</td>
+                      <td style="width:300px";>${item.email}</td>
+                      <td style="width:400px";>
                           <div class="action-column">
-                          <span style="color: #36C0C9; font-weight: 600;cursor:pointer" onclick="showMessage('${item._id}')">View</span>
-                          <span style="color: #fe0000;font-weight:600; cursor:pointer" id="delete-feeback" onclick="deleteMessageById('${item._id}')" >Delete</span>
+                          <span style="color: #36C0C9; font-weight: 600;cursor:pointer" onclick="showUser('${item._id}')">View</span>
+                          <span style="color: #fe0000;font-weight:600; cursor:pointer" id="delete-feeback" onclick="deleteUserById('${item._id}')" >Delete</span>
                           </div>
                       </td>
 
@@ -40,13 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-//FUNCTION TO MESSAGE BASED ON IT ID
-
-const deleteMessageById = async (id) => {
+const deleteUserById = async (id) => {
   try {
     // Sending a Delate request to backend API
     const response = await fetch(
-      `http://localhost:5000/api/messages/deleteMessage/${id}`,
+      `http://localhost:5000/api/user/deleteUser/${id}`,
       {
         method: "DELETE",
         // headers: {
@@ -56,36 +53,35 @@ const deleteMessageById = async (id) => {
     );
 
     if (response.ok) {
-      const responseData = await response.json();
-      alert(responseData.message);
+      alert(`Do you want to delete this user`);
       location.reload();
     } else {
       console.error(
-        `Failed to delete blog with ID ${id}:`,
+        `Failed to delete user with ID ${id}:`,
         response.statusText
       );
     }
   } catch (error) {
-    console.error("Error deleting blog:", error);
+    console.error("Error deleting user:", error);
   }
 };
 
-//Function to display single message from table
+//Displaying single user
 
-const showMessage = async (id) => {
+const showUser = async (id) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/messages/getMessageById/${id}`,
+      `http://localhost:5000/api/user/getUserById/${id}`,
       {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
       }
     );
 
     if (!response.ok) {
-      alert("Failed to view the message");
+      alert("Failed to like/unlike blog");
     }
 
     const Messages = await response.json();
@@ -96,13 +92,13 @@ const showMessage = async (id) => {
 
     document.getElementById("visitorName").innerHTML = Messages.username;
     document.getElementById("visitorEmail").innerHTML = Messages.email;
-    document.getElementById("visitorMessage").innerHTML = Messages.message;
+    // document.getElementById("visitorMessage").innerHTML = Messages.message;
   } catch (error) {
-    console.error("Not able to display message:", error);
+    console.error("User not:", error);
   }
 };
-//Dismiss the message being displayed from message table
 
+//Button to dismiss the user displayed
 document.getElementById("dismiss-btn").addEventListener("click", () => {
   document.getElementById("message-box").style.visibility = "hidden";
   // location.reload();
@@ -137,9 +133,7 @@ function checkTokenExpiration() {
 
 window.addEventListener("load", checkTokenExpiration);
 
-//LOGGING USER OUT
-
-const logoutButton = document.getElementById("logoutBtns");
+const logoutButton = document.getElementById("loggingout");
 
 logoutButton.addEventListener("click", async function () {
   try {

@@ -21,7 +21,8 @@
             <!-- <div class="sidebar-lists"> -->
             <span class="sidebar-labels-container">
                 <img src="/assets/MyProfile.jpg" alt="user-profile" class="dash-icon" id="profile-image">
-                <a href="./profilepage.html"><span class="sidebar-labels">M.Ismael</span></a>
+                <a href="./profilepage.html"><span class="sidebar-labels" id="admin">Ismael</span></a>
+
             </span>
             <span class="sidebar-labels-container">
                 <img src="/assets/dashboard.png" alt="dashboard icon" class="dash-icon">
@@ -29,14 +30,17 @@
             </span>
             <span class="sidebar-labels-container">
                 <img src="/assets/blog.png" alt="blog icon" class="dash-icon">
-                <a href="./blogdashboard.html"><span class="sidebar-labels">Blog</span></a>
+                <a href="./blogdashboard.html"><span class="sidebar-labels">Blogs</span></a>
+            </span>
+            <span class="sidebar-labels-container">
+                <img src="/assets/user.png" alt="blog icon" class="dash-icon">
+                <a href="./users.html" class="sidebar-labels"><span>Users</span></a>
             </span>
             <span class="sidebar-labels-container">
                 <img src="/assets/logout.png" alt="logout-icon" class="dash-icon">
-                <a href="../index.html"><span class="sidebar-labels">Logout</span></a>
+                <a href="../index.html"><span class="sidebar-labels" id="logouts">Logout</span></a>
             </span>
 
-            <!-- </div> -->
         </div>
 
         <div class="dashboard-contents">
@@ -48,7 +52,9 @@
                         <h3>TOTAL BLOGS</h3>
                         <span class="box-card">
                             <img src="/assets/icons8-blog-50.png" alt="blog-icon" class="dash-icon">
-                            <p>34</p>
+                            <p id="allblogs">
+                                <!-- displays number of blogs dynamically -->
+                            </p>
                         </span>
                     </span>
                 </div>
@@ -57,7 +63,9 @@
                         <h3>MONTHLY BLOGS</h3>
                         <span class="box-card">
                             <img src="/assets/icons8-blog-50.png" alt="blog-icon" class="dash-icon">
-                            <p>34</p>
+                            <p id="blogs">
+                                <!-- displays number of blogs dynamically -->
+                            </p>
                         </span>
                     </span>
 

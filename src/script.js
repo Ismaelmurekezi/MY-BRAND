@@ -82,7 +82,7 @@ async function toggleLike(blogId, iconElement) {
     );
 
     if (!response.ok) {
-      throw new Error("Failed to toggle like");
+      alert("Failed to toggle like");
     }
 
     // Update like count in UI
@@ -93,9 +93,11 @@ async function toggleLike(blogId, iconElement) {
     if (iconElement.classList.contains("liked")) {
       likeHolder.textContent = likeCount - 1;
       iconElement.classList.remove("liked");
+      location.reload();
     } else {
       likeHolder.textContent = likeCount + 1;
       iconElement.classList.add("liked");
+      location.reload();
     }
   } catch (error) {
     console.error("Error toggling like:", error);
@@ -133,3 +135,50 @@ function checkTokenExpiration() {
 }
 
 window.addEventListener("load", checkTokenExpiration);
+
+function toggleDropdown() {
+  var dropdownContent = document.getElementById("dropdown-content");
+  if (dropdownContent.style.display === "none") {
+    dropdownContent.style.display = "block";
+  } else {
+    dropdownContent.style.display = "none";
+  }
+}
+
+//Adding logout functionality to the home page
+
+const logoutButton = document.getElementById("logout");
+
+logoutButton.addEventListener("click", async function () {
+  try {
+    const response = await fetch("http://localhost:5000/api/user/logout", {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      alert(responseData.message);
+      localStorage.removeItem("token");
+      localStorage.removeItem("loggedUser");
+      localStorage.removeItem("tokenExpiration");
+      document.getElementById("profile").style.visibility = "hidden";
+      location.reload();
+    } else {
+      console.error("Logout failed:", await response.text());
+    }
+  } catch (error) {
+    console.error("An error occurred during logout:", error);
+  }
+});
+
+// Function to retrieve user ID from token stored in local storage
+function getUserIdFromToken() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const payload = token.split(".")[1];
+    const decodedPayload = JSON.parse(atob(payload));
+    console.log(decodedPayload);
+    return decodedPayload?.data?._id;
+  }
+  return null;
+}

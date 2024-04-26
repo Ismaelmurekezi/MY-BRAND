@@ -32,6 +32,7 @@ form.addEventListener("submit", async (e) => {
       localStorage.setItem("token", userData.token);
       localStorage.setItem("loggedUser", JSON.stringify(userData));
       setTokenExpiration(1);
+      alert("Log in successfully");
 
       // Check if the username is "mark" and redirect to the dashboard page
       if (userData.email === "kamali@gmail.com") {
@@ -51,7 +52,8 @@ form.addEventListener("submit", async (e) => {
 });
 
 function setTokenExpiration(expirationMinutes) {
-  const expirationTime = new Date().getTime() + expirationMinutes * 60 * 1000;
+  const expirationTime =
+    new Date().getTime() + expirationMinutes * 60 * 60 * 1000;
 
   localStorage.setItem("tokenExpiration", expirationTime);
 }

@@ -18,7 +18,7 @@ body {
 }
 .wrapper {
   width: 1020px;
-  height: 740px;
+  height: 100%;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -124,8 +124,8 @@ span {
 
 .return-btn {
   width: 500px;
-  height: 50px;
-  margin: 3rem auto;
+  padding: 0.5rem;
+  margin: 2rem auto;
   background-color: #36c0c9;
   border: none;
   border-radius: 10px;
