@@ -23,7 +23,7 @@ hamburgerMenu.addEventListener("click", () => {
 //Functionality for getting all blogs from database
 
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("http://localhost:5000/api/blog/getAllBlogs", {
+  fetch("https://my-backend-i1bg.onrender.com/api/blog/getAllBlogs", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
