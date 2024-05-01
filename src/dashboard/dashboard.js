@@ -1,7 +1,7 @@
 //FUNCTION TO DISPLAY MESSAGE IN THE TABLE
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:5000/api/messages/getAllMessages", {
+  fetch("https://my-brand-backend-ibtm.onrender.com/api/messages/getAllMessages", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const deleteMessageById = async (id) => {
   try {
     // Sending a Delate request to backend API
     const response = await fetch(
-      `http://localhost:5000/api/messages/deleteMessage/${id}`,
+      `https://my-brand-backend-ibtm.onrender.com/api/messages/deleteMessage/${id}`,
       {
         method: "DELETE",
         // headers: {
@@ -75,7 +75,7 @@ const deleteMessageById = async (id) => {
 const showMessage = async (id) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/messages/getMessageById/${id}`,
+      `https://my-brand-backend-ibtm.onrender.com/api/messages/getMessageById/${id}`,
       {
         method: "GET",
         headers: {
@@ -143,7 +143,7 @@ const logoutButton = document.getElementById("logoutBtns");
 
 logoutButton.addEventListener("click", async function () {
   try {
-    const response = await fetch("http://localhost:5000/api/user/logout", {
+    const response = await fetch("https://my-brand-backend-ibtm.onrender.com/api/user/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

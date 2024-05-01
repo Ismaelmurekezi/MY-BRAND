@@ -23,11 +23,12 @@ hamburgerMenu.addEventListener("click", () => {
 //Functionality for getting all blogs from database
 
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("http://localhost:5000/api/blog/getAllBlogs", {
+  fetch("https://my-brand-backend-ibtm.onrender.com/api/blog/getAllBlogs", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
+    mode: "cors",
   })
     .then((response) => response.json())
     .then((data) => {
@@ -72,7 +73,7 @@ async function toggleLike(blogId, iconElement) {
 
     // Send request to backend to like or unlike the blog
     const response = await fetch(
-      `http://localhost:5000/api/blog/${blogId}/like`,
+      `https://my-brand-backend-ibtm.onrender.com/api/blog/${blogId}/like`,
       {
         method: "POST",
         headers: {
@@ -151,9 +152,12 @@ const logoutButton = document.getElementById("logout");
 
 logoutButton.addEventListener("click", async function () {
   try {
-    const response = await fetch("http://localhost:5000/api/user/logout", {
-      method: "POST",
-    });
+    const response = await fetch(
+      "https://my-brand-backend-ibtm.onrender.com/api/user/logout",
+      {
+        method: "POST",
+      }
+    );
 
     if (response.ok) {
       const responseData = await response.json();

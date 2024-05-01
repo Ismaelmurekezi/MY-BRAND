@@ -2,7 +2,7 @@
 const fetchUserById = async (userId) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/user/getUserById/${userId}`,
+      `https://my-brand-backend-ibtm.onrender.com/api/user/getUserById/${userId}`,
       {
         method: "GET",
         headers: {
@@ -53,7 +53,7 @@ const updateUserById = async (userId, userData) => {
 // Fetch user data and populate form fields
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const userId = "66276f01642261270f6c9477"; // Replace with the actual user ID
+    const userId = "66276f01642261270f6c9477"; 
     const userData = await fetchUserById(userId);
 
     if (userData) {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Update user profile
 document.getElementById("update-btn").addEventListener("click", async () => {
   try {
-    const userId = "66276f01642261270f6c9477"; // Replace with the actual user ID
+    const userId = "66276f01642261270f6c9477";
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -78,7 +78,8 @@ document.getElementById("update-btn").addEventListener("click", async () => {
       return alert("Password and Confirm Password do not match");
     }
 
-    const userData = { username, email, password }; // Create user data object
+    // Create user data object
+    const userData = { username, email, password };
 
     const updatedUserData = await updateUserById(userId, userData);
 

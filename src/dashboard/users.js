@@ -1,7 +1,7 @@
 //FUNCTION TO DISPLAY MESSAGE IN THE TABLE
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/api/user/getAllUsers", {
+  fetch("https://my-brand-backend-ibtm.onrender.com/api/user/getAllUsers", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -42,12 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
 const deleteUserById = async (id) => {
   try {
     // Sending a Delate request to backend API
-    const response = await fetch(`/api/user/deleteUser/${id}`, {
-      method: "DELETE",
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      // },
-    });
+    const response = await fetch(
+      `https://my-brand-backend-ibtm.onrender.com/api/user/deleteUser/${id}`,
+      {
+        method: "DELETE",
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      }
+    );
 
     if (response.ok) {
       alert(`Do you want to delete this user`);
@@ -67,12 +70,15 @@ const deleteUserById = async (id) => {
 
 const showUser = async (id) => {
   try {
-    const response = await fetch(`/api/user/getUserById/${id}`, {
-      method: "GET",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-    });
+    const response = await fetch(
+      `https://my-brand-backend-ibtm.onrender.com/api/user/getUserById/${id}`,
+      {
+        method: "GET",
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+      }
+    );
 
     if (!response.ok) {
       alert("Failed to like/unlike blog");
